@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .page {
+            position: relative;
+            margin: 20px;
+            width: 200px;
+            height: 200px;
+            background-image: url("pic.jpg");
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .page__hd {
+            position: absolute;
+            color: white;
+            width: 80px;
+            text-align: center;
+            background-color: rgb(237, 93, 27);
+            margin-top: 20px;
+            margin-left: -15px;
+            transform: rotate(-45deg)
+        }
+        .page__ft {
+            position: absolute;
+            color: white;
+            text-align: center;
+            background-color: rgb(101, 98, 98);
+            bottom: 0;
+            height: 23px;
+            padding:1px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page__hd">自制剧</div>
+        <div class="page__ft">更新到101集</div>
+    </div>
+</body>
+</html>
