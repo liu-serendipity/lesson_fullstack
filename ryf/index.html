@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两列式布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            /* display: flex; */
+        }
+        .aside, .main {
+            height: 500px;
+        }
+        .aside {
+            float: left;
+            width: 300px;
+            background-color: green;
+        }
+        .main {
+            flex: 1;
+            background-color: red;
+            overflow: hidden;
+            /* margin-right: 300px; */
+            /* float: left;
+            width: calc(100% - 300px) */
+        }
+    </style>
+</head>
+<body>
+    <!-- 自适应的两列式布局
+        设计一套布局，两列式布局， aside 300px , 剩下的交给 main
+        左右
+        侧边栏固定宽度，主栏宽度自适应
+    -->
+    <div class="container">
+        <aside class="aside"></aside>
+        <main class="main"></main>
+    </div>
+</body>
+</html>
