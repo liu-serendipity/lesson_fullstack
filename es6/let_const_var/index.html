@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = 1; // 全局
+        let d = 5;
+        {
+            /*代码片段*/
+            var b = 3;
+            let a = 2;
+            const name = '刘利民';
+            // 属于一个作用域有d吗？， 地址的代号
+            // 继续往外查找， 全局
+            // 冒泡查找， js 存在作用域链
+            console.log(name,a,d);
+        }
+        // 查找作用域的过程
+        console.log(name+"和"+a+b);
+        // 1. 全局作用域  window
+        // 2. 局部作用域  
+            // - 函数
+            // - 块级作用域
+        // 3. 
+    </script>
+</body>
+</html>
