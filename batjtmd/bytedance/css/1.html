@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 文档流 排版流程*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 选择器 */
+        .specified-scope{
+            width: 300px;
+        }
+        .specified-scope li{
+            padding: 0 20px;
+            height: 40px;
+            /* 文字垂直居中 */
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            background-color: black;
+            position: relative;  /*在父容器设置相对定位 */
+            /* 副作用  盒子模型的一部分， 改变了原有的盒子模型 */
+            /* border-bottom: 1px solid green; */
+        }
+        /* 基数行
+        偶数行 */
+        /* css 伪类 状态， 伪元素 */
+        .specified-scope li:nth-child(odd) {
+            /* background-color: #f66; */
+        }
+        .specified-scope li:nth-child(even) {
+            /* background-color: #66f; */
+        }
+        .specified-scope li:hover {
+            background-color: green;
+        }
+        .specified-scope li:before {
+            /* background-color: #66f; */
+            /* :before 伪元素选择器   容器内容开始之前 */
+            content: 'before ';
+        }
+        .specified-scope li:after {
+            /* background-color: #66f; */
+            /* :after 伪元素选择器   容器内容结束之前 */
+            content: ' ';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: green;
+            /* 定位会让元素离开文档流 */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bruse">
+        <ul class="specified-scope">
+            <li>10001</li>
+            <li>10002</li>
+            <li>10003</li>
+            <li>10004</li>
+            <li>10005</li>
+            <li>10006</li>
+            <li>10007</li>
+            <li>10008</li>
+            <li>10009</li>
+        </ul>
+    </div>
+</body>
+</html>

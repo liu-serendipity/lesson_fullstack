@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 无障碍访问 -->
+    <label for="keywords">keywords</label>
+    <!-- autofocus="true" 自动聚焦-->
+    <input type="text" id="keywords" />
+    <script>
+        const input = document.querySelector('#keywords');
+        // 聚焦
+        input.addEventListener('focus',function(event){
+            console.log('focus  表单聚焦事件')
+        })
+        // input事件  实时收集值
+        input.addEventListener('input',function(event){
+            console.log(this.value);
+        });
+        // input.focus();
+        // change事件, keyup事件, keydown事件
+        // enter 键
+        input.addEventListener('keydown',function(event){
+            console.log(event.keyCode)
+            if(event.keyCode == 13){
+                console.log('提交表单')
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shoppingCart</title>
+</head>
+<body>
+    <script>
+        // 要有一个购物车，里面有各种挑好的商品
+        // 购物车 shoppingCart
+        //const shoppingCart = ["男鞋","javascript丛书","IP秘籍"];
+        // 计算价格，首先需要知道各种商品的价格  定义商品，商品的属性  价格
+        // 商品还有其他属性供消费者了解
+        // const shoes = {
+        //     price: 100,
+        //     name: "男鞋",
+        //     size: 42
+        // }
+        // const books = {
+        //     price: 69,
+        //     author: "张三",
+        //     name: "javascript丛书"
+        // }
+        // const IPbooks = {
+        //     price: 179,
+        //     author: "李四",
+        //     name: "IPbooks"
+        // }
+        // function getMoney() {
+            
+        // }
+        // console.log(books.price+shoes.price+IPbooks.price);
+        // 购物车列表里面的商品  对象   运用数组  把商品对象放进去
+        // const shoppingCart = [
+        //     shoes={
+        //         price: 100,
+        //         name: "男鞋",
+        //         size: 42
+        //     },
+        //     books={
+        //         price: 69,
+        //         author: "张三",
+        //         name: "javascript丛书"
+        //     },
+        //     IPbooks={
+        //         price: 179,
+        //         author: "李四",
+        //         name: "IPbooks"
+        //     }
+        // ]
+        // 输出一种商品的价格
+        //console.log(shoppingCart[1].price)
+        // 怎么输出总价格？  写死了  如果又挑了几样商品  漏钱了  败家
+        //console.log(shoppingCart[0].price+shoppingCart[1].price+shoppingCart[2].price)
+        // 怎么把加入购物车的所有商品进行价格加法？  数组  有长度
+        // 通过一个函数方法进行计算
+        // for 循环把每个数组对象元素的价格属性值进行加法
+        // function getMoney(){
+        //     // 钱初始为0
+        //     let money = 0;
+        //     for(i=0;i<shoppingCart.length;i++){
+        //         money += shoppingCart[i].price;
+        //     }
+        //     console.log(money);
+        // }
+        // getMoney();
+        // 有个人非要买两双鞋，4本javascript书和7本IPbooks   可恶！  
+        // 把这些商品加入购物车后   数量   计算总价格
+        const shoppingCart = [
+            shoes={
+                price: 100,
+                name: "男鞋",
+                size: 42,
+                amount: 2
+            },
+            books={
+                price: 69,
+                author: "张三",
+                name: "javascript丛书",
+                amount: 4
+            },
+            IPbooks={
+                price: 179,
+                author: "李四",
+                name: "IPbooks",
+                amount: 7
+            }
+        ]
+        // 计算价格   数量乘以单价的和  输出
+        function getMoney(){
+            // 钱初始为0
+            let money = 0;
+            for(i=0;i<shoppingCart.length;i++){
+                // 第几件商品价格乘以第几件数量  然后相加
+                money += shoppingCart[i].price*shoppingCart[i].amount;
+            }
+            console.log(money);
+        }
+        getMoney();
+    </script>
+</body>
+</html>
