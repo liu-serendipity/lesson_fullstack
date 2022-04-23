@@ -1,0 +1,71 @@
+/* css reset 样式重置 */
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;  /* 轮廓 */
+}
+/* css 继承 */
+html,body{
+    height: 100%;
+}
+body{
+    background-color: #373737;
+}
+.page{
+}
+.page_hd{
+    padding: 40px;
+}
+.page_title{
+    text-align: left;
+    font: size 400px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+}
+.page_desc{
+    margin-top: 4px;
+    color: rgba(255,255,255,0.6);
+    text-align: left;
+}
+.page_bd{
+
+}
+.button-sp-area{
+    margin: 15px auto;
+    padding: 15px;
+    text-align: center;
+}
+/* .antd  当前项目或公司
+    微信
+*/
+.weui-btn{
+    display: block;
+    width: 184px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px 24px;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: center;
+    color: #fff;
+
+    border: radius 8px;
+    text-decoration: none;
+    line-height: 1.88235294;
+}
+.weui-btn_primary{
+    background-color: green;
+}
+.weui-btn_default{
+    color:rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,0.08);
+}
+/* 兄弟选择器  选择紧跟第一个.weui-btn的元素，即第二个.weui-btn*/
+.weui-btn+.weui-btn{
+    margin-top: 10px;
+}
+.weui-btn_disabled{
+    background-color: rgba(255,255,255,0.08);
+    color: rgba(0,0,0,0.2);
+    cursor: not-allowed;
+}

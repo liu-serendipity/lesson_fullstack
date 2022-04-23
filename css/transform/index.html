@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test_transform {
+            width: 10px; 
+            height: 200px;
+            background-color: #c685d9;
+            margin: 100px auto;
+            /* 变形属性在三维空间中发生 */
+            transform-style: preserve-3d;
+            transform-origin: 0px 0px;
+            /* transform: translate(-100px); */
+            /* 正值是顺时针,负值是逆时针 
+                移动  正值  向屏幕外(变大)  负值 向屏幕里面走(变小) */
+            /* transform: rotate(45deg); */
+            /* transform: translateY(100px); */
+            /* 哪个点是不动的 */
+            transition: transform 1s;
+        }
+        .test_transform:hover {
+            height:400px;
+            transform: rotate(45deg)
+        }
+        .wrap {
+            /* 视距 */
+            perspective: 900px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+    <div class="test_transform"></div>
+    </div>
+</body>
+</html>

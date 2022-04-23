@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEUI-Button</title>
+    <link rel="stylesheet" href="./btn.css">
+</head>
+<body>
+    <!-- html 结构 由外到内 从上到下 -->
+    <!-- 取类名是个技术活， 从大厂学习一些词汇 
+            1. page 结构命名套路
+            2. __  bem 国际命名规范
+            3. page  block  兴起一个区块
+            4. page_hd  子元素  element
+            .page>.page__hd>.page__title+.page__ft
+            5. 组件命名  可以复用的组件按钮
+                .weui.btn  .tm.btn  .jd.btn
+                项目名或公司名  作为前缀  .btn 新的一个block
+                .weui-messagebox>.weui-messagebox__hd{弹窗标题}+weui-messagebox__bd{}+weui-messagebox__ft>.weui.btn*2
+    -->
+    <div class="page">
+    <div class="page_hd">
+        <h1 class="page_title">button</h1>
+        <p class="page_desc">按钮</p>
+    </div>
+    <div class="page_bd">
+        <div class="button-sp-area">
+            <!-- BEM  Block  Element  Modifier
+            weui-btn 按钮的基础类
+            再加状态类名
+            状态下css类名里 -->
+        <a href="" class="weui-btn weui-btn_primary">主要操作</a>
+        <a href="" class="weui-btn weui-btn_default">次要操作</a>
+        <a href="" class="weui-btn weui-btn_disabled">次要操作</a>
+    </div>
+    </div>
+    <!-- <div class="page_ft"></div> -->
+</div>
+</body>
+</html>
