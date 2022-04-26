@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+            padding: 10px;
+            border: 3px solid #000;
+        }
+        .div2 {
+            float: left;
+            padding: 10px;
+            border: 3px solid red;
+        }
+        .box {
+            background: #d32d2d;
+            padding: 10px;
+            width: 500px;
+            height: 400px;
+        }
+        .rule1 {
+            float: left;
+            margin: 10px;
+            padding: 10px;
+            background: #eee;
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <img src="https://img.zcool.cn/community/01231058bd0426a801219c77521a7f.jpg@1280w_1l_2o_100sh.jpg" alt="">
+    </div>
+    <div class="box">
+        <!-- 行内元素 不能设置宽高， 内容撑起来， 块级相关的不要做 -->
+        <span class="rule1">首页</span>
+        <span class="rule1">发现</span>
+        <span class="rule1">动态</span>
+        <span class="rule1">我的</span>
+    </div>
+    <!-- block inline 之外的
+    float flex grid    table-cell  inline-block 创建新的格式上下文 -->
+    <div class="div2">
+        <img src="https://n.sinaimg.cn/sinakd20120/631/w1151h1080/20200714/ede9-iwhseiu4143751.jpg" alt="">
+    </div>
+</body>
+</html>
