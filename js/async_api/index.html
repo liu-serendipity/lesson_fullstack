@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步之数据请求</title>
+</head>
+<body>
+    <ul id="posts"></ul>
+    <script>
+        // 由异步变同步
+        let posts = [];
+        let users = [];
+        
+        // 封装 dry
+        function ajax(url, cb) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.send();
+            xhr.addEventListener('readystatechange', function(event) {
+                if (event.target.readyState === 4) {
+                    let data = JSON.parse(event.target.responseText);
+                    // 嵌套 callback 回调
+                    cb();
+                }
+            })
+        }
+        // 使用回调函数技巧，实现异步任务嵌套，异步任务同步化，控制代码的执行流程
+        ajax('http://localhost:3000/posts', () => {
+            ajax('http://localhost:3000/posts', () => {
+                ajax('http://localhost:3000/posts/1/comments', () => {
+                    console.log('The work is over');
+                })
+            })
+        });
+        
+        // fetch('http://localhost:3000/posts')
+        //     .then(data => data.json())
+        //     .then(data => {
+        //         posts = [...data];  // 扩展运算符
+        //         fetch('http://localhost:3001/users')
+        //             .then(data => data.json())
+        //             .then(data => {
+        //                 users = [...data]; 
+        //                 console.log(posts, users, '-------------');
+        //             })
+        //     })
+        
+        // 前端拉取数据API xhr 对象
+        // const xhr = new XMLHttpRequest();
+        // xhr.open("GET", "http://127.0.0.1:3000/posts", true);
+        // xhr.send(); // 发送请求
+        // // http 请求响应式
+        // xhr.addEventListener('readystatechange', function(event) {
+        //     // console.log(event);
+        //     if (event.target.readyState === 4) { // 数据全部到达了
+        //         document.getElementById('posts').innerHTML = 
+        //         JSON.parse(event.target.responseText).map(item =>`
+        //             <li>
+        //                 ${item.id} ${item.title} ${item.author} 
+        //             </li>
+        //         `)
+        //     }
+        // })
+        // fetch('http://127.0.0.1:3000/posts')
+        //     // 二进制文件流
+        //     .then(data => data.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        // console.log('-------')
+    </script>
+</body>
+</html>

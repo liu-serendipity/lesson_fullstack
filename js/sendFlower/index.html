@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>送花</title>
+</head>
+<body>
+    <script>
+        // chrome 最快的浏览器
+        // 浏览器  上网代理，运行页面时，js 的宿主环境
+        // 作用域
+        function func(){
+            let c = 3;  //局部变量
+        }
+        //  全局变量
+        //  变量名  地址的映射  属于运行环境的作用域
+        let d;  // undefined  没有值，类型未定义， 空间起始地址不确定，空间大小未定义
+        var a = 1;  // var  es5及之前 js 变量常量声明的关键字
+        let b = 2;  // es6 之后提供的 let  const
+        // const name = "llm";
+        // let age = 19;
+        // const hometown = "南昌";
+        // const sex = "男";
+        // 除了简单数据类型之外的  一切都是对象
+        // 对象 字面量
+        // 函数名大写，类的构造函数
+        // class Flower{
+        //     constructor(){
+        //     }
+        // }
+        // 类的构造函数
+        function Flower(type,num) {
+            // 指针
+            // this指向构造函数运行时的对象
+            // console.log(this)
+            this.type = type;
+            this.num = num;
+        }
+        // 构造对象时就指向哪个
+        // const ych = new Flower('油菜花',1);
+        // console.log(ych.type);
+
+        // const rose = new Flower('玫瑰花',11);
+        // console.log(rose.type,rose.num);
+        const obj = {
+            name: "llm",
+            age: 19,
+            hometown: "南昌",
+            sex: "男"
+        };
+        // 对象自变量
+        const llm = {
+            name: "llm",
+            age: 20,
+            hometown: "赣州",
+            sex: "男",
+            yz: 94,
+            isSingle: true,
+            gf: null,
+            work_status: undefined,
+            // 参数
+            sendFlower(target){
+                // this 属于函数
+                // this 指向对象
+                const flower = new Flower('红玫瑰',99);
+                // console.log(this);
+                // liyifen
+                // console.log("target")
+                // target 类型是对象， 对象上有 sendFlower 方法
+                target.receiveFlower(this,flower);
+            }
+        }
+        // 送花
+        // 对象由两部分组成： 属性、方法
+        // 女主角
+        // []  数组    {}  数组
+        const liyifen = {
+            name: "liyifen",
+            age: 20,
+            receiveFlower(sender,flower){
+                // 代码可读性
+                console.log('收到了'+sender.name+"送的"+'送的'
+                        +flower.num+'朵'+flower.type);
+            }
+        }
+        // 老乡和liyifen是室友
+        // 代理人
+        const xiaohong = {
+            name: "xiaohong",
+            hometown: "赣州",
+            // 接口  代理者
+            receiveFlower(sender,flower){
+                // target.reviceFlower(llm);
+                // if(sender.name == 'llm'){
+                //     console.log('good');
+                // }
+                // xiaohong拥有和lyf一样的接口方法
+                // 代替lyf收花
+                if(sender.yz < 90){
+                    console.log('不收')
+                }else{
+                    console.log('吃一顿')
+                    liyifen.receiveFlower(sender,flower);
+                }
+            }
+        }
+        llm.sendFlower(xiaohong);
+        // llm.sendFlower(liyifen);
+    </script>
+</body>
+</html>
