@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 History API</title>
+    <link rel="stylesheet" href="./common.css" >
+</head>
+<body>
+    <!-- 
+        domian  组织文件  向用户提供很多资源
+        链接把资源组织起来
+        一切皆资源  Restful
+    -->
+    <div class="wrapper">
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fluffy.html">Fluffy</a></li>
+            <li><a href="socks.html">Socks</a></li>
+            <li><a href="whiskers.html">whiskers</a></li>
+        </ul>
+        <p class="content">Welcome to Kittens! Home of Fluffy, Socks, and Whiskers. If you're not suffering from a cute overdose within the hour, then you really are a heartless bugger! Now lets look at some cats!</p>
+        <div class="media">
+            <img src="http://www.ichong123.com/uploads/2014/08/m1.jpg" alt="" class="photo">
+        </div>
+    </div>
+    <script>
+        // 传统web网站  发起优化
+        // ajax  刷新整个页面  不用白一下
+        function getHtml(href, callback) {
+            // fetch 小弟
+            const xhr = new XMLHttpRequest();  // web 2.0
+            // console.log(xhr.readyState, '00000000000');
+            xhr.open("GET", href);
+            // console.log(xhr.readyState, '11111111111');
+            xhr.send();  // 发生请求
+            // console.log(xhr.readyState, '22222222222');
+            xhr.onreadystatechange = function() {
+                // console.log(xhr.readyState, '----------------------');
+                if (xhr.readyState === 4) {  // 服务器响应  完成到达了
+                    callback(xhr.responseText)
+                }
+            }
+        }
+        function createState(data) {
+            // . 可以匹配任何字符
+            // + 匹配一次或多次
+            // () 分组
+            const contentMatches = data.match(/content">(.+)</);
+            // console.log(contentMatches);
+            const content = contentMatches[1];
+            const photoMatches = data.match(/img.+src=">(.+)"\s/);
+            const photo = photoMatches[1];
+            console.log(photo);
+            console.log(content);
+            return {
+                content,
+                photo
+            }
+        }
+        // 生命周期  所有的资源都加载完成
+        // window.onload = function() {}
+        // window.addEventListener("load", function() {
+        //     console.log('onload');
+        // })
+        window.addEventListener("DOMContentLoaded", function() {
+            // html + css 页面渲染
+            // 比load更早的js运行，交互
+            // console.log('loaded');
+            const links = document.querySelectorAll('.nav li a')
+            links.forEach((link) => {
+                link.addEventListener('click', function(event) {
+                    // 传统a  点完就白屏
+                    event.preventDefault();
+                    let href = event.target.href;
+                    // 通用
+                    getHtml(href, function(data) {
+                        // callback
+                        // console.log(data);
+                        // 正则的过程
+                        // 新状态
+                        let state = createState(data);
+                        // console.log(state);
+                        document.querySelector('.content').innerText = state.content;
+                        document.querySelector('.photo').src = state.photo;
+                    })
+                    // const xhr = new XMLHttpRequest();
+                    // console.log(href);
+                    // console.log(href);
+                });
+            })
+        })
+        
+    </script>
+</body>
+</html>
