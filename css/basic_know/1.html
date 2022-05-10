@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            /* css4 */
+            --blue: #1e90ff;
+            color: pink;
+        }
+        body {
+            color: orange;
+            background-color: var(--blue);
+        }
+        h1 {
+            color: inherit; /* 默认继承，可以不写inherit */
+        }
+        a {
+            color: inherit;  /* 继承 */
+        }
+        p {
+            text-indent: 30px;
+            cursor: move;
+        }
+        .nowrap {
+            /* \n \r 换行符 只在一行显示 不会换行 */
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>css 继承</h1>
+    <a href="#">链接如何放弃浏览器的着色，继承父类元素的颜色</a>
+    <p class="nowrap">密码作为一个保护用户个人财产的“武器”，如今早就已经成为了每个人的刚需。然而，绝大多数人其实并没有养成良好的密码使用习惯，在知名密码管理服务公司NordPass每年公布的“全球200个最常用密码榜单”里，其中“123456”的榜首地位常年未能被撼动。尽管许多人习惯于使用“123456”是因为这个密码确实简单好记，但同时这也带来了不小的安全风险。 </p>
+</body>
+</html>
