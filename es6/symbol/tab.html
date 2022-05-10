@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;  
+            /* input a button img 浏览器轮廓不统一 webkit(开源内核) chrome(商业) ie
+                ios  android  移动端 webkit 统一了
+            */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .llm_tabbar {
+            display: flex;
+        }
+        .llm_tababbar__item {
+            flex: 1;
+            height: 50px;
+        }
+        .llm_tababbar__item a {
+            display: block;
+            line-height: 50px;
+            text-align: center;
+        }
+        .llm_tababbar__item a:first-child {
+            border-right: 1px solid #ddd;
+        }
+        .llm_tababbar__item_on {
+            background-color: pink;
+            color: white
+        }
+    </style>
+</head>
+<body>
+    <div class="llm_tabbar">
+        <div class="llm_tababbar__item llm_tababbar__item_on">
+            <a href="#" data-type="basic">
+                basic
+            </a>
+        </div>
+        <div class="llm_tababbar__item">
+            <a href="#" data-type="super">
+                super
+            </a>
+        </div>
+    </div>
+    <div id="list">
+
+    </div>
+    <script>
+        const list = document.getElementById('list');
+        const links = document.querySelectorAll('.llm_tababbar__item a');
+        // const tabTypes = {
+        //     basic: Symbol(),  /* es6 里面新的简单数据类型， 独一无二 */
+        //     super: Symbol()
+        // }
+        // java等大型语言，tab切换时，为了可读性 tabTypes对象常量
+        // 所有tab类型的管理 统一
+        const tabTypes = {
+            basic: 'basic',  
+            super: 'super'
+        }
+
+        links.forEach(link =>{
+            link.addEventListener('click', function(event) {
+                // a 带来交互感觉
+                event.preventDefault();
+                const type = event.target.dataset.type;
+                const parent = this.parentNode;
+                // console.log(parent);
+                if (!parent.classList.contains('llm_tababbar__item_on')) {
+                    document.querySelector('.llm_tababbar__item_on').classList.remove('llm_tababbar__item_on');
+                    parent.classList.add('llm_tababbar__item_on');
+                }
+                // console.log(type, tabTypes.basic, tabTypes.super);
+                // if (type == 'basic') {
+                if (type == tabTypes.basic) {
+                    list.innerText = 'basic';
+                }
+                // if (type == 'super') {
+                if (type == tabTypes.super) {
+                    list.innerText = 'super';
+                }
+            });
+        })
+    </script>
+</body>
+</html>
