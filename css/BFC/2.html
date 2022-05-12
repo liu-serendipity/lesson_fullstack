@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin边距重叠</title>
+    <style>
+        .box {
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            background: #000;
+        }
+        .box1 {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <!-- margin边距重叠导致两个相邻盒子之间的距离不是margin的和，而是较大的那个值，
+        解决方法是为元素包裹一个盒子形成一个完全独立的空间，做到里面元素不受外面布局影响
+        如包裹一个p标签，或者一个设置margin,另一个设置padding，或者触发一个BFC，即给一个盒子添加BFC属性-->
+        <!-- <p><div class="box"></div></p> -->
+        <div class="box box1"></div>
+    </div>
+</body>
+</html>

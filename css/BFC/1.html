@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高度塌陷</title>
+    <style>
+        .box {
+            margin: 100px;
+            width: 100px;
+            height: 100px;
+            background: red;
+            float: left;
+        }
+        .container {
+            background: #000;
+            /* box设置完float脱离文档流导致container的高度没有被撑开，所以没有背景颜色显示，解决方法可以在container上触发一个BFC属性 */
+            /* display: inline-block;  */
+            /* display: flex; */
+            /* float: left; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
