@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const posts = [
+            {title: 'i love js', author: 'llm', id: 1},
+            {title: 'i love css', author: 'yyy', id: 2},
+            {title: 'i love html', author: 'ddd'}
+        ];
+        // posts.push({
+        //     title: 'i love html',
+        //     author: 'llm'
+        // })
+        // localStorage.setItem('posts', JSON.stringify(posts));
+        const authors = [
+            {name: 'sss', hometown: '赣州', bio: '面向字节跳动编程'}
+        ];
+
+        function getPostById(id) {
+            // id 找到文章
+            // const post = posts.find(post => post.id === id);
+            // const {author} = post;
+            // console.log(authors.find(item => item.name == author));
+            // return post
+            return new Promise((resolve, reject) => {
+                // resolve()
+                console.log('////////');
+                setTimeout(() => {
+                    const post = posts.find(post => post.id === id);
+                    // console.log(post);
+                    if (post) {
+                        resolve(post);
+                    } else {
+                        let err = new Error('没有数据');
+                        reject(err);
+                    }
+                }, 200)
+            })
+        }
+        // console.log(getPostById(1));
+        getPostById(11)
+            .then((data) => { 
+                console.log(data, '-------------');
+            })
+            .catch((err) => {
+                console.log(err.message);
+            })
+    </script>
+</body>
+</html>
