@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0;
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .green {
+            background-color: green;
+        }
+        .orange {
+            background-color: orange;
+        }
+        .w150 {
+            width: 150px;
+            height: 150px;
+        }
+        main {
+            height: 100px;
+        }
+        /* main, aside {
+            float: left;
+        } */
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
+        }
+        .grial {
+            /* 圣杯三栏布局  padding 把左右的侧边栏的位置让出来 */
+            padding: 0 150px;
+        }
+        .grial main {
+            float: left;
+            width: 100%;
+        }
+        .grial .left {
+            position: relative;
+            left: -150px;
+            margin-left: -100%;
+        }
+        .grial .right {
+            float: left;
+            margin-left: -150px;
+            right: -150px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <h4>方法一：圣杯布局</h4>
+        <section class="grial clearfix">
+            <!-- 自适应 -->
+            <main class="green">main</main>
+            <aside class="w150 left orange">aside</aside>
+            <aside class="w150 right orange">aside</aside>
+        </section>
+    </div>
+</body>
+</html>
