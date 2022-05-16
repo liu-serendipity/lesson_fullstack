@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+            /* margin: 0 auto; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* transform: translate(-50%, -50%); */
+            margin-left: -250px;
+            margin-top: -250px;
+            line-height: 500px;
+            font-size: 50px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <script>
+        let count = 1;
+        const box = document.querySelector('.box');
+        // debounce 给我们要执行的getUserAction带来防抖的能力，减少执行次数到最后一次
+        // 增加需求  
+        // 1. 先执行，还是最后执行  参数，去赋值  立即执行
+        // 2. 支持取消功能
+        function getUserAction(e) {
+            console.log(e);
+            box.innerHTML = ++count;
+        }
+        function debounce(func, wait, immediate) {
+            // 闭包空间
+            // 1次  闭包函数的声明阶段
+            // 函数在执行期间可以访问到声明时位于闭包空间中的变量
+            var timeout;
+            // 返回函数
+            function debounced() {
+                // 执行期间？ n
+                var context = this;  // 上下文
+                var args = arguments;
+                if (timeout) clearTimeout(timeout);  // 防抖的关键
+                console.log(timeout, '--------');
+                if (immediate) {
+                    var callNow = !timeout;  // 首次是true
+                    // callNow false
+                    timeout = setTimeout(function() {
+                        timeout = null;  // 没有每次都能运行的机会
+                    }, wait)
+                    if (callNow) func.apply(context, args);
+                } else {
+                    timeout = setTimeout(function() {
+                    func.apply(context, args)
+                }, wait);
+                }
+            }
+            return debounced;
+        }
+        const setUserAction = debounce(getUserAction, 1000, true);
+        box.addEventListener('mousemove', setUserAction);
+    </script>
+</body>
+</html>
