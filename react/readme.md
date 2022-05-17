@@ -18,4 +18,4 @@ react
         - script 引入  /src/main.jsx
             1. src  js开发目录
             2. main.jsx 入口文件
-            3. 文件后缀是 jsx 的时候， react
+            3. 文件后缀是 jsx 的时候  react
