@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 什么是promise  es6 解决异步任务 代码编写顺序和执行顺序不一致的统一方案
+        // callback 回调有缺点
+        const weather = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({temp:29, conditions:'sunny with clouds'});
+            }, 5000);
+        });
+        const tweets = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(['i like beer', 'BBQ is also good']);
+            }, 3000);
+        });
+        // weather
+        //     .then((data) => {
+        //         // 拿到了天气
+        //         console.log(data);
+        //         // 又返回了一个promise
+        //         return tweets
+        //     })
+        //     .then(data => {
+        //         // tweets
+        //         console.log(data);
+        //     })
+        Promise
+            .all([weather, tweets])  // 静态的 static  所有都执行完了
+            .then(response => {
+                // console.log(response);
+                const [weatherInfo, tweetsInfo] = response;
+                console.log(weatherInfo, tweetsInfo);
+            })
+
+
+        // tweets
+        //     .then((data) => {
+        //         console.log(data);
+        //     })
+    </script>
+</body>
+</html>
