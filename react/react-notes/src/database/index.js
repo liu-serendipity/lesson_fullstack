@@ -23,3 +23,13 @@ function databaseInitialize() {
         db.addCollection('notes')  // 创建一个表，集合
     }
 }
+// select 供其他模块调用  参数是表明
+export function loadCollection(collection) {  // thenable
+    return new Promise((resolve) => {  // 查询需要时间
+        // 内存切换到硬盘 读写速度是差千倍万倍的 I/O操作
+        db.loadDatabase({}, () => {
+            const _collection = db.getCollection(collection) || db.addCollection(collection);
+            resolve(_collection);
+        })
+    })
+}
