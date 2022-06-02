@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1 2 4 3 
+        // 1 2  Promise 构造函数 同步
+        const promise = new Promise((resolve, reject) => {
+            // pending PromiseState
+            console.log(1);
+            resolve('success');  // 下一轮任务 fulfilled
+            console.log(2);
+        })
+        // event loop 下下一轮任务
+        // 时间到了 0 立马到
+        // 进入event loop 时候，宏任务 稍微没那么紧急
+        setTimeout(() => {
+            console.log(5);
+        }, 500)
+        // 进入到 event loop  异步
+        // event loop 微任务 紧急 下一轮任务
+        // 立即执行
+        promise.then((data) => {  // pending PromiseState
+            console.log(3, data);
+            setTimeout(() => {
+                console.log(6);
+            }, 1000)
+        })
+        // 第一次宏任务
+        console.log(4);
+    </script>
+</body>
+</html>
