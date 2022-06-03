@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Header from './Header'
 import Loader from './Loader'
 import Results from './Results'
+import axios from 'axios'
 
 function App() {
   // 数据驱动的界面
@@ -11,12 +12,16 @@ function App() {
   useEffect(() => {
     // 优先显示组件，延后加载数据
     (async function() {
-      const response = await fetch("http://localhost:8080/beers")
-      const data = await response.json()
-      setBeers(data)
+      // json-server  早期用
+      // fast-mock  提供的在线接口伪造工具
+      // api 调用
+      const data = await axios.get("https://www.fastmock.site/mock/cf60839e8e935ccf8e45c671a44a49a3/beers/list")
+      // const data = await response.json()
+      setBeers(data.data.beers)
       setLoading(false)
     })()
   }, [])
+
   return (
     <div className="wrapper">
       {/* 利用组件化思维  状态思维 */}
