@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 控制何时实例化
+        // function runp1() {
+        //     // Promise 实例化
+        //     const p1 = new Promise(r = console.log('立即打印'))
+        //     return p1
+        // }
+        // runp1()
+        //     .then
+        // 异步  sync 同步
+        function runAsync(x) {
+            const p = new Promise(resolve => setTimeout(() => resolve(x, console.log(x)), 1000))
+            return p
+        }
+        // runAsync(1)
+        //     .then(data => {
+        //         console.log(data)
+        //     })
+        // js 单线程 同步任务
+        // Promise.all 并发
+        Promise.all([runAsync(1), runAsync(2), runAsync(3)])
+        // 要等到所有的promise fulfilled
+        // 保持promise顺序来返回结果
+            .then(res => console.log(res))
+    </script>
+</body>
+</html>
