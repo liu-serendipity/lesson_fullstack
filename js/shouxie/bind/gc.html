@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 闭包的意义 
+        // 闭包函数的存在，延长了外部局部变量的生存周期
+        // 1. js 如何知道闭包内部函数用了哪些父函数的局部变量
+            // 不用知道，没有显示的引用任何一个父级变量，一直都在
+            // 闭包保留全部父级变量，不论用没用
+        // 2. js 如何确定onclick消失后要回收哪些变量
+        // 3. 父级的变量不回收，父级的父级呢
+            // 会一直沿着作用域链影响
+        // let obj = {c: 1};
+        // function show() {
+        //     let a = 12;
+        //     let b = 4;
+        //     document.onclick = function() {
+        //         alert(eval(prompt("请随便输入一个表达式")))
+        //     }
+        // }
+        // show();
+        // setTimeout(() => {
+        //     document.onclick = null
+        //     obj = null  // 手动垃圾回收
+        // }, 5000)
+        // 计数器
+        // 垃圾回收的原理
+        // js依靠引用计数机制，确定一个东西是否能回收
+        let a = {name: 'blue', age: 34};  // a 引用了 json  + 1
+        let b = a;  // b 引用了 json  json + 1  2
+        a = null;  // a 不再指向 json  -1
+        b = null;  // -1  0
+        // json 可回收
+        // 闭包 = 外部变量 + 函数
+        function fn1() {
+            let a = 11;
+            function fn2() {
+                let b = 5;
+                document.onclick = function() {
+
+                }
+            }
+            fn2();
+        }
+        fn1()
+    </script>
+</body>
+</html>

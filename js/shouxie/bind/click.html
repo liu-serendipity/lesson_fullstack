@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点赞</button>
+    <button>收藏</button>
+    <button>加关注</button>
+    <script>
+        let aBtn = document.querySelectorAll('button')
+        for(let i = 0, len = aBtn.length; i < len; i++) {  // 同步代码
+            aBtn[i].onclick = function() {  
+                alert(i)  // 异步代码
+            }
+        }
+    </script>
+</body>
+</html>

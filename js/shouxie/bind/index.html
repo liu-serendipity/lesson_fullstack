@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- html5 画布 -->
+    <canvas id="demo"></canvas>
+    <script>
+        // function initCanvas() {
+        //     let canvas = document.querySelector('#demo');
+        //     let gd = canvas.getContext('2d');  // 二维画图  绘图句柄
+        //     let img = new Image();
+        //     img.src = "https://img.36krcdn.com/20220609/v2_cfb63111b0584ca5b97c4c0bb5006f69_img_jpg";
+        //     img.onload = function() {
+        //         gd.drawImage(img, 0, 0);
+        //     }
+        //     canvas.onclick = function() {
+        //         console.log('//////////');
+        //     }
+        // }
+        // initCanvas();
+        let canvas = document.querySelector('#demo');
+        let gd = canvas.getContext('2d');
+        function initCanvas() {
+            // img 局部变量，外界访问不到
+            let img = new Image();
+            img.src = "https://img.36krcdn.com/20220609/v2_cfb63111b0584ca5b97c4c0bb5006f69_img_jpg";
+            img.onload = function() {
+                gd.drawImage(img, 0, 0);
+            }
+            // 内部没有子函数
+        }
+        function initEvent() {
+            canvas.onclick = function() {
+
+            }
+        }
+        // 调用前
+        initCanvas();   // 插入执行栈
+        // 出栈  函数变量check一下 没有人要用我吧  垃圾回收
+        initEvent(); 
+    </script>
+</body>
+</html>
