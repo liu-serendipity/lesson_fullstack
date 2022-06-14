@@ -1,0 +1,60 @@
+.model {
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background: #fff;
+    overflow: hidden;
+    z-index: 9999;
+    box-shadow: inset 0 0 1px 0 #000;
+    margin: auto;
+}
+
+.model-title {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+}
+
+.model-content {
+    height: 100px;
+    padding: 0 10px;
+}
+
+.model-operator {
+    width: 100%;
+    height: 50px;
+}
+
+.model-operator-close, .model-operator-confirm {
+    width: 50%;
+    border: none;
+    outline: none;
+    height: 50px;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 50px;
+    opacity: 1;
+    color: #fff;
+    background: rgb(247, 32, 32);
+    cursor: pointer;
+}
+
+.model-operator-close:active, .model-operator-confirm:active {
+    opacity: 6;
+    transition: opacity 0.3s;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000;
+    opacity: .6;
+    z-index: 9998;
+}
