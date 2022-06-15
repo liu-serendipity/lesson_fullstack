@@ -36,6 +36,12 @@ input {
     vertical-align: middle;
 }
 
+.mod:after {
+    content: '\0020';
+    display: block;
+    clear: both;
+}
+
 html {
     color: #111;
     background: #fff;
@@ -193,4 +199,48 @@ body {
     background-color: #edf4ed;
     width: 1492px;
     height: 304px;
+}
+
+.section {
+    padding: 10px 0;
+    margin-bottom: 30px;
+    min-height: 200px;
+}
+
+.section .wrapper:before, .section .wrapper:after {
+    content: "\0020";
+    display: block;
+    clear: both;
+}
+
+.wrapper {
+    width: 950px;
+    margin: 0 auto;
+}
+
+.section .wrapper {
+    zoom: 1;
+}
+
+.section .side {
+    float: right;
+    width: 265px;
+    margin-left: 30px;
+}
+
+.section .main {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.mod {
+    width: auto;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font: 15px Arial, Helvetica, sans-serif;
+    color: #072;
+    margin: 0 0 12px 0;
+    line-height: 150%;
 }
