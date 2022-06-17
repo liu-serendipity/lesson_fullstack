@@ -15,8 +15,12 @@ const Cart = () => {
     )
         const [total, setTotal] = useState(0)
         const [checkedAll, setCheckedAll] = useState(false)
-        const onCheckedChange = () => {
-
+        const onCheckedChange = (item) => {
+            // console.log(item, '----------');
+            let idx = cartData.findIndex(data => item.id == data.id)
+            // console.log(idx);
+            cartData[idx].checked = !cartData[idx].checked
+            setCartData([...cartData])
         }
         const onWrapCheckedAllChange = () => {
             
@@ -24,6 +28,12 @@ const Cart = () => {
         useEffect(() => {
             // mounted
             // update
+            // console.log('---------');
+            let totalPrice = cartData.filter(item => item.checked)
+                .reduce((prev, item) => {
+                    return prev + item.price
+                }, 0)
+            setTotal(totalPrice)
         }, [cartData])
         const Footer = (
                 <div className="footer">
