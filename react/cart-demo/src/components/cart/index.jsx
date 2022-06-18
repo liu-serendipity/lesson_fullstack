@@ -34,6 +34,8 @@ const Cart = () => {
                     return prev + item.price
                 }, 0)
             setTotal(totalPrice)
+            
+            setCheckedAll(cartData.every(item => item.checked))
         }, [cartData])
         const Footer = (
                 <div className="footer">
