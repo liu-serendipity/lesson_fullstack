@@ -2,13 +2,16 @@ import styled from 'styled-components'
 
 export const TabWrapper = styled.div`
     .tab {
-        display: inline-block;
-        width: 200%;
-        .tab-ul {
+        width: 1000px;
+        overflow: hidden;
+        display: flex;
+        .tab-li{
+            width: 70px;
+            height: 64px;
+            /* background: pink; */
             display: flex;
-            .tab-ul-li {
-                flex: 1;
-            }
+            align-items: center;
+            justify-content: center;
         }
     }
 `
