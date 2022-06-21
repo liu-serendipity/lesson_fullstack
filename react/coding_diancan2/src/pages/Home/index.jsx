@@ -6,8 +6,8 @@ import Banners from './Banners'
 import SetMeal from './SetMeal'
 import StoreList from './StoreList'
 import StoreInfo from './StoreInfo'
-import { getBanners } from '../../api/request'
-import { getRestaurants } from '../../api/request'
+import { getBanners } from '@/api/request'
+import { getRestaurants } from '@/api/request'
 
 const Home = () => {
     const [restaurants, setRestaurants] = useState([])

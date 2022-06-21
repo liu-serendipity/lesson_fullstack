@@ -124,3 +124,13 @@
     1. npm remove antd-mobile 移除
     2. npm install antd-mobile@latest
     3. 
+
+- 当组件深度比较大的时候
+    相对路径变得难 ../../
+    工程化，vite 支持的工程
+    vite.config.js 配置 alias 路径别名
+    resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "src")
+        }
+    }
