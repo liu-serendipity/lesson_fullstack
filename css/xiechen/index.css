@@ -48,14 +48,10 @@
 }
 
 .hometitle span {
-    font-size: 15px;
-    color: #222;
     display: inline-block;
 }
 
 .hometitle .ico-arrow {
-    font-size: 15px;
-    color: #222;
     font-style: normal;
     width: 16px;
     height: 16px;
@@ -79,17 +75,12 @@
     box-shadow: none;
     padding: 0 6px;
     color: #999;
-    font-size: 14px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .searchline .ico-search {
-    line-height: 32px;
-    color: #999;
-    font-size: 14px;
-    white-space: nowrap;
     font-style: normal;
     display: inline-block;
     width: 12px;
@@ -99,13 +90,6 @@
     background-size: 12px;
     margin: 0 8px 0 6px;
     vertical-align: -1px;
-}
-
-.searchline span {
-    line-height: 32px;
-    color: #999;
-    font-size: 14px;
-    white-space: nowrap;
 }
 
 .header-user {
@@ -128,4 +112,193 @@
     margin: 0 auto;
     display: block;
 }
+
+.lvpai-bottom-issue {
+    margin: 0;
+    padding: 0;
+    width: 85px;
+    height: 90px;
+    position: fixed;
+    z-index: 11;
+    left: 50%;
+    margin-left: -42px;
+    background: url(https://pages.c-ctrip.com/you/livestream/lvpai_publish_new_btn.png) no-repeat;
+    background-size: 85px 90px;
+    bottom: 3px;
+}
+
+.main-wrap {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 44px;
+}
+
+.boxwrap_v1 {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 3.75rem;
+    overflow: hidden;
+}
+
+.bgbox_v1 img {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    width: 100%;
+}
+
+.waterfall_wrap {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.water-title {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    visibility: visible;
+}
+
+.water-title .water-tab {
+    visibility: visible;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    height: 60px;
+    padding-bottom: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.water-tab .sintab {
+    visibility: visible;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    font-size: 16px;
+    min-width: 70px;
+    height: 24px;
+    line-height: 20px;
+    padding-top: 20px;
+    color: #222;
+    text-align: center;
+} 
+
+.sintab span {
+    visibility: visible;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222;
+    text-align: center;
+}
+
+.current span:after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background: #2fcfbb;
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+}
+
+/* 加载中 */
+.lp_loading {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    padding: 10px 0 15px;
+    background: #f4f8fb;
+    background-color: #fff;
+}
+
+.lp_loading p {
+    color: #666;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    padding-left: 22px;
+    position: relative;
+}
+
+.lp_loading p:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(https://pages.c-ctrip.com/you/livestream/lvpai_loading.png?v=20190422_19_14);
+    background-size: 16px;
+    animation: loading 1.58s linear infinite;
+}
+
+.tabfixed {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-width: 100%;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    z-index: 2;
+    top: 44px;
+    visibility: hidden;
+}
+
+.tabfixed .water-tab {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 50px;
+}
+
+.tabfixed .water-tab .sintab {
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    font-size: 16px;
+    min-width: 70px;
+    height: 24px;
+    line-height: 20px;
+    color: #222;
+    text-align: center;
+    padding-top: 14px;
+}
+
+.tabfixed .water-tab .sintab span {
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222;
+    text-align: center;
+}
+
 
