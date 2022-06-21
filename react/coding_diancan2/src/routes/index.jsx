@@ -7,6 +7,9 @@ const Find = lazy(() => import('../pages/Find'))
 const Mine = lazy(() => import('../pages/Mine'))
 const Cities = lazy(() => import('../pages/Cities'))
 const HomeDetail = lazy(() => import('../pages/HomeDetail'))
+const HomeOrder = lazy(() => import('../pages/HomeDetail/HomeOrder'))
+const HomeComment = lazy(() => import('../pages/HomeDetail/HomeComment'))
+const HomeBusiness = lazy(() => import('../pages/HomeDetail/HomeBusiness'))
 
 // Routes 不能和react-router-dom 一样
 const RoutesConfig = () => {
@@ -20,7 +23,11 @@ const RoutesConfig = () => {
                 <Route path="/order" element={<Order />}></Route>
                 <Route path="/mine" element={<Mine />}></Route>
                 <Route path="/cities" element={<Cities />}></Route>
-                <Route path="/homedetail/:id" element={<HomeDetail />}></Route>
+                <Route path="/homedetail/:id" element={<HomeDetail />}>
+                    <Route path="/homedetail/:id/order" element={<HomeOrder />} />
+                    <Route path="/homedetail/:id/comment" element={<HomeComment />} />
+                    <Route path="/homedetail/:id/business" element={<HomeBusiness />} />
+                </Route>
             </Routes>
         </>
     )

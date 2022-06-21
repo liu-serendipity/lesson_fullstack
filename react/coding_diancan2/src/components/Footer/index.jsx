@@ -13,7 +13,7 @@ export default function Footer() {
     
     return (
         <FooterWrapper>
-            <Link to='/home' className={classnames({active: pathname == '/home'})}>
+            <Link to='/home' className={classnames({active: pathname == '/home' || pathname == '/'})}>
                 <i className="fa fa-home"></i>
                 <span>首页</span>
             </Link>
