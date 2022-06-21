@@ -114,3 +114,8 @@
     2. 组件化思维，封装成组件就可以抽离，
         以一个组件引入
     3. 首页干净了 layout 没有污染它
+
+- antd-mobile 升级
+    1. npm remove antd-mobile 移除
+    2. npm install antd-mobile@latest
+    3. 
