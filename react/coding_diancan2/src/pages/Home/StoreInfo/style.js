@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    width:100%;
+ width:100%;
     padding-bottom: 60px;
     .home_loadmore{
         width:2.5rem;
@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
     width:100%;
     background: white;
     padding:10px 5px;
+   
     .home_insideBox-top{
         display: flex;
         .home_imgLeft{
@@ -37,19 +38,19 @@ export const Wrapper = styled.div`
             width:100%;
             margin-left: 15px;
             .home_restaurant{
-                font-size: 15px; 
-                font-weight: 700;
-                padding: 5px 0;
-                width:2.6rem;
-                color:rgb(29, 29, 29);
-                white-space:nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+               font-size: 15px; 
+               font-weight: 700;
+               padding: 5px 0;
+               width:2.6rem;
+               color:rgb(29, 29, 29);
+               white-space:nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
             }
             .home_sell{
                 display: flex;
                 font-size: 12px;
-                padding: 3px 0;
+               padding: 3px 0;
             }
             .home_distance{
                 display: flex;

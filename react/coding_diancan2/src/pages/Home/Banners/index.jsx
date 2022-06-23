@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom'
 export default function Banners({banners}) {
     let swiper = null;
     useEffect(() => {
-        // console.log('11111111111');
-        // swiper 不能多次实例化
+        // swiper 不能多次实例化 
+        console.log('-----?????------')
         if (swiper) {
-            return
+            return 
         }
-        swiper = new Swiper('.btn-banners', {
+        swiper= new Swiper('.btn-banners', {
             loop: true,
             pagination: {
                 el: '.swiper-pagination'
@@ -22,6 +22,7 @@ export default function Banners({banners}) {
 
     const renderBtnBannersPage1 = () => {
         let items = banners.slice(0, 10);
+        console.log(items)
         return items.map(item => {
             return (
                 <Link 

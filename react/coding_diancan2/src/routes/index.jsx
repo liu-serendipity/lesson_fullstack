@@ -6,8 +6,8 @@ const Order = lazy(() => import('../pages/Order'))
 const Find = lazy(() => import('../pages/Find'))
 const Mine = lazy(() => import('../pages/Mine'))
 const Cities = lazy(() => import('../pages/Cities'))
-const HomeDetail = lazy(() => import('../pages/HomeDetail'))
-// import HomeDetail from '../pages/HomeDetail'
+// const HomeDetail = lazy(() => import('../pages/HomeDetail'))
+import HomeDetail from '../pages/HomeDetail'
 const HomeOrder = lazy(() => import('../pages/HomeDetail/HomeOrder'))
 const HomeComment = lazy(() => import('../pages/HomeDetail/HomeComment'))
 const HomeBusiness = lazy(() => import('../pages/HomeDetail/HomeBusiness'))

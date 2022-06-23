@@ -1,9 +1,9 @@
-import React from 'react'; 
-import { Wrapper } from './style';
+import React from 'react'
+import { Wrapper } from './style'
 
-const StoreList = () => {
+export default function index() {
     const backtop = () => {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0)
     }
     return (
         <Wrapper>
@@ -16,7 +16,7 @@ const StoreList = () => {
                     <i className="fa fa-caret-down"></i>
                 </div>
                 <div>
-                    <p>距离最近</p>
+                    <p>距离远近</p>
                 </div>
                 <div>
                     <p>品质联盟</p>
@@ -32,5 +32,3 @@ const StoreList = () => {
         </Wrapper>
     )
 }
-
-export default StoreList

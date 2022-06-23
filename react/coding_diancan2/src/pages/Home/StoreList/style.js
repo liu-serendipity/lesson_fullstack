@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    .recommend_store{
+.recommend_store{
     display: flex;
     justify-content: center;
     padding:10px 0;

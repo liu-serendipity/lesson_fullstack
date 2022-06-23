@@ -1,11 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const HomeBusiness = () => {
-    return (
-        <div>
-            HomeBusiness
-        </div>
-    )
+export default function HomeBusiness() {
+  return (
+    <div>
+      HomeBusiness
+    </div>
+  )
 }
-
-export default HomeBusiness

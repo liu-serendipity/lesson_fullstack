@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-// import {} from './style'
+import React, { useState, useEffect } from 'react';
+// import { } from './style'
 
 const Find = () => {
     return (
@@ -10,4 +10,3 @@ const Find = () => {
 }
 
 export default Find
-

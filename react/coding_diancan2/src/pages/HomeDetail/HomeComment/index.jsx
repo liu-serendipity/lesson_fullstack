@@ -1,11 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const HomeComment = () => {
-    return (
-        <div>
-            HomeComment
-        </div>
-    )
+export default function HomeComment() {
+  return (
+    <div>
+      HomeComment
+    </div>
+  )
 }
-
-export default HomeComment

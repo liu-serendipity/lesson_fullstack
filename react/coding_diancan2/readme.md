@@ -7,6 +7,11 @@
     App 组件            
     1. 页面级别组件共享布局方案         
         header + 动态路由组件(Routes + Route path) + footer
+    2. 二级路由 layout 升级， 用<Outlet />
+        - 在路由配置中，一级路由 children 可以设置多个二级路由
+        - Context 上下文环境
+            Route.context
+            path -> 二级路由组件 Order
 
 - header 组件的版本化及配置       
     1. 页面中layout 固定部分，不属于页面组件的内部，属于layout
@@ -88,6 +93,9 @@
     React.lazy 延迟按需加载（切到路由）加载  import(path)
     const Home = lazy(()=>import ('./pages/Home'))
     4. 非首页 其他页面级别路由应该采用按需加载
+    5. 延迟加载的组件，要为其提供Suspense
+        react提供的一个组件，在还没有加载js组件前，可以先用fallback先试下
+        suspense + lazy
 
 - antd-mobile
     antd 的移动版  手机栈
@@ -123,7 +131,6 @@
 - antd-mobile 升级
     1. npm remove antd-mobile 移除
     2. npm install antd-mobile@latest
-    3. 
 
 - 当组件深度比较大的时候
     相对路径变得难 ../../
@@ -134,3 +141,13 @@
             "@": path.resolve(__dirname, "src")
         }
     }
+
+- NavLink 比 Link 更专业
+    如果要给active  激活路由的时候，自带光环、
+    二级路由里面， useEffect + navigate 自己跳一次
+
+- 代码中要展示抽象，封装和设计能力
+    1. routerConfig 
+    2. 复杂jsx的展示封装，函数化插入，有利于代码的可读性    
+        写代码的人和读代码的不是同一个
+        函数本身具有描述性

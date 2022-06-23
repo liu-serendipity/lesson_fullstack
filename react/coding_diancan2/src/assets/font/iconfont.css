@@ -1,8 +1,8 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 3470329 */
-  src: url('iconfont.woff2?t=1655379603655') format('woff2'),
-       url('iconfont.woff?t=1655379603655') format('woff'),
-       url('iconfont.ttf?t=1655379603655') format('truetype');
+  font-family: "iconfont"; /* Project id 3470327 */
+  src: url('iconfont.woff2?t=1655379599300') format('woff2'),
+       url('iconfont.woff?t=1655379599300') format('woff'),
+       url('iconfont.ttf?t=1655379599300') format('truetype');
 }
 
 .iconfont {
@@ -17,12 +17,12 @@
   content: "\e64f";
 }
 
-.icon-wode:before {
-  content: "\e8a0";
+.icon-dingdan:before {
+  content: "\e897";
 }
 
-.icon-dingdan:before {
-  content: "\e645";
+.icon-wode:before {
+  content: "\e8a0";
 }
 
 .icon-faxian:before {

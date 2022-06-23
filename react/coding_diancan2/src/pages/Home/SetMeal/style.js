@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    .home_info_img{
+.home_info_img{
     width:100%;
     height: 2.5rem;
     background: #fff;
@@ -73,5 +73,5 @@ export const Wrapper = styled.div`
         background: rgba(20, 20, 20,.7);
         color: #fff;
     }
-}
+}    
 `
