@@ -7,7 +7,7 @@ const Header = () => {
         <Wrapper>
             <div className="header detail_header">
                 <LeftOutline className="iconstyle"/>
-                <a href="javascript:;">
+                <a href="#">
                     <span>携程笔记</span>
                 </a>
             </div>

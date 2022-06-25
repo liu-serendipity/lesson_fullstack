@@ -9,7 +9,6 @@ const Header = () => {
     }
     return (
         <Wrapper>
-            
             <div className="user_info_wrap">
                 <div className="user_head_img_wrap">
                     <img src="https://dimg04.c-ctrip.com/images/0Z83p120009gcozr9F4B5_C_180_180.jpg" alt="" className="user_head_img" />
@@ -33,9 +32,9 @@ const Header = () => {
                 }
                 {
                     addguanzhu &&
-                    <div className="user_btn_wrap" onClick={() => onadd()}>
-                        <CheckOutline style={{width:10, height:10, marginRight: 4}} />
-                        <span className="btn_follow_text">已关注</span>
+                    <div className="user_btn_wrap" onClick={() => onadd()} >
+                        <CheckOutline style={{width:8, height:8, marginRight: 3}} />
+                        <span className="btn_follow_text" style={{fontSize:1}}>已关注</span>
                     </div>
                 }
             </div>

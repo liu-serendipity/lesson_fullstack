@@ -12,7 +12,7 @@ const ImgSwiper = ({imgdata}) => {
             loop: true,
             direction:"horizontal",
             pagination: {
-                el: '.swiper-pagination'
+                el:".swiper-pagination"
             }
         })
     }, [])
