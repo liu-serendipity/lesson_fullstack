@@ -4,30 +4,42 @@ import UserInfo from '../UserInfo'
 import ImgSwiper from '../ImgSwiper'
 import ListSwiper from '../ListSwiper'
 import Content from '../Content'
-import { getpersonInfo, getListInfo, getContent } from '../../api/request'
+import Praise from '../Praise'
+import Others from '../Others'
+import Task from '../Task'
+import { getpersonInfo, getListInfo, getContent, getUserInfo, getOthers } from '../../api/request'
 import { LocationFill, RightOutline } from 'antd-mobile-icons'
 
 const Main = () => {
+
     const [imgdata, setImgData] = useState([])
     const [listinfo, setListInfo] = useState([])
-    const [content, setContent] = useState([])
+    const [content, setContent] = useState()
+    const [useinfo, setUseInfo] = useState([])
+    const [otherUsers, setOtherUsers] = useState([])
+
     useEffect(() => {
         (async () => {
         let { data: imgData } = await getpersonInfo()
         let { data: listinfoData } = await getListInfo()
         let { data: contentData } = await getContent()
+        let { data: useInfoData } = await getUserInfo()
+        let { data: otherUsersData } = await getOthers()
         setImgData(imgData)
         setListInfo(listinfoData)
         setContent(contentData)
+        setUseInfo(useInfoData)
+        setOtherUsers(otherUsersData)
         })()
     }, [])
+
     return (
         <Wrapper>
             <div className="main">
                 <UserInfo />
                 <ImgSwiper imgdata={imgdata}/>
                 <div className="openCtrip_media">打开携程App，查看高清大图</div>
-                <div className="publish-button"></div>
+                {/* <div className="publish-button"></div> */}
                 <div className="poitag detail_poi_wrap poi_wrap_level">
                     {/* 可以拉出去作为一个单独的组件块，接口数据map 目前写死*/}
                     <div className="poiItem detail_poi_item">
@@ -49,7 +61,11 @@ const Main = () => {
                     <img src="https://pages.c-ctrip.com/you/user/careful_chosen.png" alt="" className="level_icon_img" />
                 </div>
                 <ListSwiper listinfo={listinfo} />
-                <Content content={content}/>
+                <Content content={content} />
+                <Praise useinfo={useinfo} />
+                <Others otherUsers={otherUsers} />
+                <Task />
+                <div className="openCtrip_media openCtrip_Bottom">打开携程App，查看更多笔记</div>
             </div>
         </Wrapper>
     )

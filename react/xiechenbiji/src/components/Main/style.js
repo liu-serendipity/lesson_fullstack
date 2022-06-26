@@ -95,4 +95,7 @@ export const Wrapper = styled.div`
             z-index: 1;
         }
     }
+    .openCtrip_Bottom {
+        margin-bottom: 12px;
+    }
 `

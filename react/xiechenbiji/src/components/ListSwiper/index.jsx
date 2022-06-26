@@ -3,7 +3,7 @@ import { Wrapper } from './style'
 import Swiper from 'swiper';
 
 const ListSwiper = ({listinfo}) => {
-    console.log(listinfo);
+
     let swiper = null;
     useEffect(() => {
         if (swiper) {
@@ -58,8 +58,8 @@ const ListSwiper = ({listinfo}) => {
                             item.commentsnums &&
                             <>
                                 <div className="footer_desc_wrap">
-                                    <span className="footer_desc_item">{`${item.grade}分`}</span>
-                                    <span className="footer_desc_item">{`${item.commentsnums}条评论`}</span>
+                                    <span className="footer_desc_item blue" >{`${item.grade}分`}</span>
+                                    <span className="footer_desc_item gray">{`${item.commentsnums}条评论`}</span>
                                 </div>
                                 <div className="footer_btn">去看看</div>
                             </>

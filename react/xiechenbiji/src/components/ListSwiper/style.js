@@ -251,4 +251,10 @@ export const Wrapper = styled.div`
             word-break: break-all;
         }
     }
+    .blue {
+        color: rgb(0, 153, 247)
+    }
+    .gray {
+        color: rgb(153, 153, 153);
+    }
 `
