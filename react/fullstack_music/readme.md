@@ -20,3 +20,17 @@
     react-router 路由
     redux 数据流管理
         前端 -> api -> redux（中央银行） -> 后端
+
+- react 是声明式的UI组件开发框架
+    1. 那么多的组件 好复杂，好多API
+    2. 可以用组件来声明功能  更好读
+
+- react 和 ReactDOM
+    react-router + react-router-dom
+    redux + react-redux
+
+- 数据仓库的搭建过程
+    1. 从 react-redux 中解构Provide
+        声明给应用添加数据管理功能
+    2. store 专有目录下redux中的 createStore 创建仓库实例
+    3. createStore 方法接受 reducer 函数
