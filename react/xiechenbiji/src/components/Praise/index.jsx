@@ -15,9 +15,8 @@ const Praise = ({useinfo}) => {
     }
 
     const items1 = () => {
-        return useinfo
-            .filter(item1 => item1.comments !== null)
-            .map((item) => 
+        const items2 = useinfo.filter(item1 => item1.comments !== null)
+        return items2.map((item, index) => 
                 <div className="comment_list_item" key={item.user_id}>
                     <div className="item_head_wrap">
                         <img src={item.user_head_img} alt="" className="item_head_img" />
@@ -32,11 +31,7 @@ const Praise = ({useinfo}) => {
                     <div className="item_praise_wrap">
                         <span className="item_praise_btn"></span>
                         <span className="item_praise_num">{item.comments_praise}</span>
-                        {/* 此举有bug，不成立 */}
-                        {
-                            item.index !== item.length -1  &&
-                            <div className="item_spliter"></div>
-                        }
+                        { index+1 != items2.length && <div className="item_spliter"></div> }
                     </div>
                 </div>
         )

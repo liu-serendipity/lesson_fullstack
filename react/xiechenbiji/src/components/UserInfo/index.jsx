@@ -3,12 +3,16 @@ import { Wrapper } from './style'
 import { AddOutline, CheckOutline } from 'antd-mobile-icons'
 
 const Header = () => {
+
     const [addguanzhu, setAddguanzhu] = useState(false)
+
     const onadd = () => {
         setAddguanzhu(!addguanzhu)
     }
+
     return (
         <Wrapper>
+            {/* 此部分的数据为写死的，可以根据content/:id，找到对应的user的信息，然后把数据map出来，实现动态更新 */}
             <div className="user_info_wrap">
                 <div className="user_head_img_wrap">
                     <img src="https://dimg04.c-ctrip.com/images/0Z83p120009gcozr9F4B5_C_180_180.jpg" alt="" className="user_head_img" />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Wrapper } from './style'
 import { DownOutline, UpOutline } from 'antd-mobile-icons'
 import classnames from 'classnames'
-import Mask from '../Mask'
+import Mask from '../commons/Mask'
 
 const Content = ({content={}}) => {
 

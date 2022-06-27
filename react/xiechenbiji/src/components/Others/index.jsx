@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Wrapper } from './style'
 import { EnvironmentOutline, LikeOutline } from 'antd-mobile-icons';
 
@@ -15,7 +15,7 @@ const Others = ({otherUsers}) => {
                             item.isvedio && 
                             <img src="https://pages.c-ctrip.com/you/livestream/lvpai_waterfall_paly.png" 
                                 alt="" 
-                                className=".wf_item_video_icon" />
+                                className="wf_item_video_icon" />
                         }
                         <div className="wf_item_poi_tag">
                             <EnvironmentOutline className="wf_item_poi_tag_icon" />

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
     .detail_relevant_wrap {
+        height: 100%;
         background: #f4f8fb;
         margin-top: 10px;
     }
@@ -15,10 +16,13 @@ export const Wrapper = styled.div`
         padding-left: 12px;
     }
     .relevant_waterfall_box {
-        position: relative;
         width: 100%;
+        position: relative;
         background: #f4f8fb;
-        height: 11;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 3300px;
     }
     .relevant_wf_item {
         width: 48%;
@@ -26,9 +30,8 @@ export const Wrapper = styled.div`
         border-radius: 6px;
         margin-bottom: 10px;
         background: #fff;
-        position: absolute;
-        left: 0px;
-        top: 0px;
+        position: relative;
+        counter-increment: item-counter;
     }
     .relevant_wf_item_box {
         margin: 5px;

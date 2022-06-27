@@ -7,8 +7,12 @@ import Content from '../Content'
 import Praise from '../Praise'
 import Others from '../Others'
 import Task from '../Task'
-import { getpersonInfo, getListInfo, getContent, getUserInfo, getOthers } from '../../api/request'
-import { LocationFill, RightOutline } from 'antd-mobile-icons'
+import Location from '../Location'
+import LevelIcon from '../commons/LevelIcon'
+import OpenCtrip from '../commons/OpenCtrip'
+import PublishButton from '../commons/PublishButton'
+import { getpersonInfo, getListInfo, getContent, getUserInfo, getOthers, getContentLocation } from '../../api/request'
+
 
 const Main = () => {
 
@@ -17,6 +21,7 @@ const Main = () => {
     const [content, setContent] = useState()
     const [useinfo, setUseInfo] = useState([])
     const [otherUsers, setOtherUsers] = useState([])
+    const [contentLocation, setContentLocation] = useState()
 
     useEffect(() => {
         (async () => {
@@ -25,11 +30,13 @@ const Main = () => {
         let { data: contentData } = await getContent()
         let { data: useInfoData } = await getUserInfo()
         let { data: otherUsersData } = await getOthers()
+        let { data: contentLocationData } = await getContentLocation()
         setImgData(imgData)
         setListInfo(listinfoData)
         setContent(contentData)
         setUseInfo(useInfoData)
         setOtherUsers(otherUsersData)
+        setContentLocation(contentLocationData)
         })()
     }, [])
 
@@ -38,34 +45,16 @@ const Main = () => {
             <div className="main">
                 <UserInfo />
                 <ImgSwiper imgdata={imgdata}/>
-                <div className="openCtrip_media">打开携程App，查看高清大图</div>
-                {/* <div className="publish-button"></div> */}
-                <div className="poitag detail_poi_wrap poi_wrap_level">
-                    {/* 可以拉出去作为一个单独的组件块，接口数据map 目前写死*/}
-                    <div className="poiItem detail_poi_item">
-                        <LocationFill />
-                        <span className="poi_item_name">三亚</span>
-                        <RightOutline />
-                    </div>
-                    <div className="poiItem detail_poi_item">
-                        <LocationFill className="location-fill"/>
-                        <span className="poi_item_name">
-                            三亚安隅酒店
-                            <span className="poicount poi_item_count">64篇</span>
-                        </span>
-                        <RightOutline className="right-outline" />
-                    </div>
-                </div>
-                {/* 可以根据点赞数大于多少更新状态，添加此组件块 */}
-                <div className="level_icon_wrap">
-                    <img src="https://pages.c-ctrip.com/you/user/careful_chosen.png" alt="" className="level_icon_img" />
-                </div>
+                <OpenCtrip text='打开携程App，查看高清大图' />
+                <PublishButton />
+                <Location contentLocation={contentLocation} />
+                <LevelIcon />
                 <ListSwiper listinfo={listinfo} />
                 <Content content={content} />
                 <Praise useinfo={useinfo} />
                 <Others otherUsers={otherUsers} />
                 <Task />
-                <div className="openCtrip_media openCtrip_Bottom">打开携程App，查看更多笔记</div>
+                <OpenCtrip text='打开携程App，查看更多笔记'/>
             </div>
         </Wrapper>
     )
