@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        height: 3300px;
+        height: 2710px;
     }
     .relevant_wf_item {
         width: 48%;

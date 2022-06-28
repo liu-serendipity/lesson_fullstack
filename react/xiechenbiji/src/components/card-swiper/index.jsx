@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Wrapper } from './style'
 import Swiper from 'swiper';
 
-const ListSwiper = ({listinfo}) => {
+const CardSwiper = ({cardInfo}) => {
 
     let swiper = null;
     useEffect(() => {
         if (swiper) {
             return 
         }
-        swiper= new Swiper('.swiper-container', {
+        swiper= new Swiper('#cardswpier', {
             loop: true,
-            direction:"horizontal",
         })
     }, [])
 
-    const getdiscount = (n, o) => {
-        var re = /[0-9]+\.[0-9]*/;
-        let num = n/o*10;
-        return Number(num.toString().replace(re,"$1"))
-    }
-
-    const renderListInfo = () => {
-        return listinfo.map((item) => 
+    const renderCardInfo = () => {
+        return cardInfo.map((item) => 
             <div key={item.id} className="swiper-slide goods_card_border">
                 <div className="card_cover_wrap">
                     <img src={item.img} alt="" />
@@ -33,9 +26,9 @@ const ListSwiper = ({listinfo}) => {
                     <div className="body_title_main">{item.title}</div>
                     <div className="body_tags_wrap">
                         { item.maindesc && <div className="body_tag maindesc">{item.maindesc}</div> }
-                        { item.partdesc1 && <div className="body_tag partdesc1">{item.partdesc1}</div> }
-                        { item.partdesc2 && <div className="body_tag partdesc2">{item.partdesc2}</div> }
-                        { item.partdesc3 && <div className="body_tag partdesc3">{item.partdesc3}</div> }
+                        { item.partdesc1 && <div className="body_tag partdesc">{item.partdesc1}</div> }
+                        { item.partdesc2 && <div className="body_tag partdesc">{item.partdesc2}</div> }
+                        { item.partdesc3 && <div className="body_tag partdesc">{item.partdesc3}</div> }
                     </div>
                     <div className="body_footer_wrap">
                         { 
@@ -46,7 +39,7 @@ const ListSwiper = ({listinfo}) => {
                                 <span className="price_num">{item.pricenow}</span>
                                 <span className="price_suffix">{`/${item.pricesuffix}晚`}</span>
                                 <span className="price_original">{`${item.priceprefix}${item.priceonce}`}</span>
-                                <span className="price_discount">{`${getdiscount(item.pricenow, item.priceonce)}折`}</span>
+                                <span className="price_discount">{`${(item.pricenow/item.priceonce).toFixed(1)*10}折`}</span>
                                 </div>
                                 <div className="footer_btn_sold">
                                     <span className="btn_sold_name">抢购</span>
@@ -74,9 +67,9 @@ const ListSwiper = ({listinfo}) => {
         <Wrapper>
             <div className="star_product_wrap">
                 <div className="goods_cards_wrap">
-                    <div className="swiper-container">
+                    <div className="swiper-container" id="cardswpier">
                         <div className="swiper-wrapper goods_swiper">
-                            {renderListInfo()}
+                            {renderCardInfo()}
                         </div>
                     </div>
                 </div>
@@ -85,4 +78,4 @@ const ListSwiper = ({listinfo}) => {
     )
 }
 
-export default ListSwiper
+export default CardSwiper

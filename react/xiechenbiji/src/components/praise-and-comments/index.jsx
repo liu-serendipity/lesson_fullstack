@@ -1,8 +1,7 @@
 import React from 'react';
 import { Wrapper } from './style'
-import { LikeOutline } from 'antd-mobile-icons'
 
-const Praise = ({useinfo}) => {
+const PraiseAndComments = ({useinfo}) => {
 
     const items = () => {
         return useinfo
@@ -62,9 +61,8 @@ const Praise = ({useinfo}) => {
                 <div className="comment_list_title">评论</div>
                 {items1()}
             </div>
-            <div className="openCtrip_media">打开携程App，查看全部评论</div>
         </Wrapper>
     )
 }
 
-export default Praise
+export default PraiseAndComments

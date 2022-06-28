@@ -1,41 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Wrapper } from './style'
-import UserInfo from '../UserInfo'
-import ImgSwiper from '../ImgSwiper'
-import ListSwiper from '../ListSwiper'
+import UserInfo from '../user-info'
+import CardSwiper from '../card-swiper'
 import Content from '../Content'
-import Praise from '../Praise'
-import Others from '../Others'
-import Task from '../Task'
+import PraiseAndComments from '../praise-and-comments'
+import RelatedPosts from '../related-posts'
+import Task from '../commons/task'
 import Location from '../Location'
-import LevelIcon from '../commons/LevelIcon'
-import OpenCtrip from '../commons/OpenCtrip'
-import PublishButton from '../commons/PublishButton'
+import LevelIcon from '../commons/level-icon'
+import OpenCtrip from '../commons/open-ctrip'
+import PublishButton from '../commons/publish-button'
 import { getpersonInfo, getListInfo, getContent, getUserInfo, getOthers, getContentLocation } from '../../api/request'
 
 
 const Main = () => {
 
     const [imgdata, setImgData] = useState([])
-    const [listinfo, setListInfo] = useState([])
+    const [cardInfo, setCardInfo] = useState([])
     const [content, setContent] = useState()
     const [useinfo, setUseInfo] = useState([])
-    const [otherUsers, setOtherUsers] = useState([])
+    const [posts, setPosts] = useState([])
     const [contentLocation, setContentLocation] = useState()
 
     useEffect(() => {
         (async () => {
         let { data: imgData } = await getpersonInfo()
-        let { data: listinfoData } = await getListInfo()
+        let { data: cardInfoData } = await getListInfo()
         let { data: contentData } = await getContent()
         let { data: useInfoData } = await getUserInfo()
-        let { data: otherUsersData } = await getOthers()
+        let { data: postsData } = await getOthers()
         let { data: contentLocationData } = await getContentLocation()
         setImgData(imgData)
-        setListInfo(listinfoData)
+        setCardInfo(cardInfoData)
         setContent(contentData)
         setUseInfo(useInfoData)
-        setOtherUsers(otherUsersData)
+        setPosts(postsData)
         setContentLocation(contentLocationData)
         })()
     }, [])
@@ -43,16 +42,16 @@ const Main = () => {
     return (
         <Wrapper>
             <div className="main">
-                <UserInfo />
-                <ImgSwiper imgdata={imgdata}/>
+                <UserInfo imgdata={imgdata}/>
                 <OpenCtrip text='打开携程App，查看高清大图' />
                 <PublishButton />
                 <Location contentLocation={contentLocation} />
                 <LevelIcon />
-                <ListSwiper listinfo={listinfo} />
+                <CardSwiper cardInfo={cardInfo} />
                 <Content content={content} />
-                <Praise useinfo={useinfo} />
-                <Others otherUsers={otherUsers} />
+                <PraiseAndComments useinfo={useinfo} />
+                <OpenCtrip text='打开携程App，查看更多笔记'/>
+                <RelatedPosts posts={posts} />
                 <Task />
                 <OpenCtrip text='打开携程App，查看更多笔记'/>
             </div>

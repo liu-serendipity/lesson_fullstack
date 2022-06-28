@@ -2,11 +2,10 @@ import React, { useRef, useEffect } from 'react';
 import { Wrapper } from './style'
 import { EnvironmentOutline, LikeOutline } from 'antd-mobile-icons';
 
-const Others = ({otherUsers}) => {
-    console.log(otherUsers);
+const RelatedPosts = ({posts}) => {
 
     const items = () => {
-        return otherUsers.map(item => 
+        return posts.map(item => 
             <div className="wf_item relevant_wf_item" key={item.others_id}>
                 <div className="relevant_wf_item_box">
                     <div className="wf_item_box_t">
@@ -53,4 +52,4 @@ const Others = ({otherUsers}) => {
     )
 }
 
-export default Others
+export default RelatedPosts
