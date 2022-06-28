@@ -4,8 +4,10 @@ import App from './App'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { GlobalStyle } from './style'
 // 架构中store 模块
 import store from './store'
+import { IconStyle } from "./assets/iconfont/iconfont";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // 外面再包一层 数据管理功能  项目做大了，企业里的财务
@@ -13,6 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   // react 声明式开发
   <Provider store={store}>
     <BrowserRouter>
+    <GlobalStyle />
+    <IconStyle />
     {/* react 组件 */}
       <App />
     </BrowserRouter>
