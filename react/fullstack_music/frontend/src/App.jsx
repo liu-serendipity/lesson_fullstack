@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { Top, Tab, TabItem } from './style'
 import { useNavigate, NavLink } from 'react-router-dom'
 import RouterConfig from './routes'
 // 子组件 
 function App(props) {
-  console.log(props, '-------------------');
+  // console.log(props, '-------------------');
   let { singers, users } = props
   const navigate = useNavigate()
 
@@ -67,4 +67,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App)
+// export default connect(mapStateToProps)(App)
+export default App

@@ -1,0 +1,1 @@
+export const CHANGE_BANNER_LIST = 'CHANGE_BANNER_LIST';
