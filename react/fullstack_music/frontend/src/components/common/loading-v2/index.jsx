@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, {keyframes} from 'styled-components';
-import style from '@/assets/global-style'
+import styled, { keyframes } from 'styled-components';
+import style from '@/assets/global-style';
 
 const dance = keyframes`
     0%, 40%, 100%{
@@ -10,47 +10,47 @@ const dance = keyframes`
     20%{
         transform: scaleY(1);
     }
-`
+`;
 const Loading = styled.div`
+    position: absolute;
+    top: 50%;
     height: 10px;
     width: 100%;
-    margin: auto;
     text-align: center;
     font-size: 10px;
-    >div{
+    > div {
         display: inline-block;
-        background-color: ${style["theme-color"]};
+        background-color: ${style['theme-color']};
         height: 100%;
         width: 1px;
-        margin-right:2px;
+        margin-right: 2px;
         animation: ${dance} 1s infinite;
     }
-    >div:nth-child(2) {
+    > div:nth-child(2) {
         animation-delay: -0.4s;
     }
-    >div:nth-child(3) {
+    > div:nth-child(3) {
         animation-delay: -0.6s;
     }
-    >div:nth-child(4) {
+    > div:nth-child(4) {
         animation-delay: -0.5s;
     }
-    >div:nth-child(5) {
+    > div:nth-child(5) {
         animation-delay: -0.2s;
-    } 
-
-`
+    }
+`;
 
 function LoadingV2() {
     return (
         <Loading>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <span>拼命加载中...</span>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <span>拼命加载中...</span>
         </Loading>
     );
 }
-    
+
 export default React.memo(LoadingV2);

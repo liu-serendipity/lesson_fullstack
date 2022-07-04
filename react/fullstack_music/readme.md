@@ -103,3 +103,39 @@
     2. 下拉刷新，上拉加载更多
     3. 使用了神三元封装的Scroll组件
     4. 移动端加载更多的标配
+
+- 数据管理跨页面级别的组件
+    redux 可以用来共享数据，本质
+    父子组件之间共享  好搞
+    爷孙 周围的人共享  难搞  redux connect一下
+    redux 可以跨页面级别，跨层级
+
+- redux 架构思路
+    1. 数据管理和组件，在有了redux之后，是平级关系
+        /pages  /store
+    2. 模块化数据管理，每个模块 reducer + action 下放到页面路由模块中
+    3. 每个模块都提供index.js 灵魂，所有的reducer，action，constants 都一起 export 清单文件
+
+- react 组件渲染原理
+    1. 挂载
+    2. 当状态更新时，
+        mvvm  JSX 从头到尾 重新编译
+    3. recommend中，多个重要子组件 Slider 等
+    4. 给相对独立，组件加memo，只要外界给它的props没有变，则不会重新编译
+    5. 热更新，页面局部
+
+- memo 组件性能优化
+    1. 子组件
+    2. 父组件数据复杂，多项改变状态的地方
+    3. 父组件改变，没有影响到子组件（props未变，没有props）
+    4. 组件外面都加memo
+
+- styled-components 原则
+    1. 最外层容器 styled-components接管
+        Wrapper  Container
+    2. List + ListItem 方便样式的复用
+
+- 图片延迟加载
+    1. react-lazyload 声明式组件 LazyLoad + placeholder 包住 原来的图片
+    2. Scroll onScroll react-lazyload 去 forceCheck
+    

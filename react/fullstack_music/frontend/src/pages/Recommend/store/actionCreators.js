@@ -1,13 +1,13 @@
-import { getBannerRequest } from "@/api/request"
+import { getBannerRequest, getRecommendListRequest } from '@/api/request';
 import * as actionTypes from './constants'
 
-// api请求  一定放在action中
-export const changeBannerList = (data) => ({
-    type: actionTypes.CHANGE_BANNER_LIST,
+export const  changeBannerList = (data) => ({
+    type: actionTypes.CHANGE_BANNER,
     data: data
 })
+// api 请求 一定放在action 中
 export const getBannerList = () => {
-    return (dispatch) => {  
+    return (dispatch) => {
         getBannerRequest()
             .then(data => {
                 const action = changeBannerList(data.banners)
@@ -15,3 +15,21 @@ export const getBannerList = () => {
             })
     }
 }
+
+export const changeRecommendList = (data) => ({
+    type: actionTypes.CHANGE_RECOMMEND_LIST,
+    data: data
+})
+export const getRecommendList = () => {
+    return (dispatch) => {
+        getRecommendListRequest().then(data => {
+            dispatch(changeRecommendList(data.result))
+            dispatch(changeEnterLoading(false))
+        })
+    }
+}
+
+export const changeEnterLoading = (data) => ({
+    type: actionTypes.CHANGE_ENTER_LOADING,
+    data: data
+})

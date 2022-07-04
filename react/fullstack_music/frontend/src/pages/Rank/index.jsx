@@ -1,39 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-// import { getRankList } from '@/store/actionCreators'
 
-const Rank = (props) => {
+function Rank(props) {
 
-    // const { rankList, getRankListDispatch } = props
-    useEffect(() => {
-        // setTimeout(() => {
-        //     rankList.push({id: 3})
-        // }, 1000)
-        // getRankListDispatch()
-    }, [])
+  const {  } = props
 
-    return (
-        <div>
-            Rank
-        </div>
-    )
+  useEffect(() => {
+    // setTimeout(() =>{
+    //   rankList.push({id: 2})
+    // },1000)
+  },[])
+
+  return (
+    <div>
+      Rank
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
-    return {
-        // rankList: state.rank.rankList
-    }
-}
+  return {
 
+  }
+}
 // 状态改变的流程
 // 数据状态变得万无一失
 const mapDispatchToProps = (dispatch) => {
-    return {
-        // getRankListDispatch() {
-        //     // 派action
-        //     dispatch(getRankList())
-        // }
-    }
+  return {
+
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Rank)
+export default connect(mapStateToProps,mapDispatchToProps)(Rank)
