@@ -11,3 +11,13 @@ export const getSingersRequest =
 
 export const getRecommendListRequest = 
     () => axiosInstance.get('/personalized')
+
+// 热搜
+export const getHotKeyWordsRequest = 
+    () => axiosInstance.get('/search/hot')
+
+export const getSuggestListRequest = 
+    query => axiosInstance.get(`/search/suggest?keywords=${query}`)
+
+export const getResultSongsListRequest = 
+    query => axiosInstance.get(`/search?keywords=${query}`)
