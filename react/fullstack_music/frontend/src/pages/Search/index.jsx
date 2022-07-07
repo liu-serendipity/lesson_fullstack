@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef, useCallback} from 'react';
 import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { getHotKeyWords } from './store/actionCreators'
+import { 
+    getHotKeyWords, 
+    changeEnterLoading }
+    from './store/actionCreators'
 import { CSSTransition } from 'react-transition-group';
 import { Container } from './style'
+import SearchBox from '@/components/common/search-box'
+import Loading from '@/components/common/loading'
+import { EnterLoading } from './../Singers/style'
 
 // useRef DOM 相关
 // useCallback 性能优化
@@ -12,19 +18,40 @@ const Search = (props) => {
     // 搜索内容  redux 解决共享状态问题
     // 1. 搜索列表 api action redux
     const [query, setQuery] = useState('')
-    const { hotList, songsCount } = props
-    const { getHotKeyWordsDispatch } = props
+    const { 
+        hotList, 
+        songsCount, 
+        enterLoading 
+    } = props
+    const { 
+        getHotKeyWordsDispatch, 
+        changeEnterLoadingDispatch 
+    } = props
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
+
     useEffect(() => {
         setShow(true)
         if (!hotList.length) {
             getHotKeyWordsDispatch()
         }
     }, [])
-    setTimeout(() => {
+
+    const searchBack = useCallback(() => {
         setShow(false)
-    }, 3000)
+    }, [])
+
+    const handleQuery = (q) => {
+        setQuery(q)
+    }
+
+    useEffect(() => {
+        if (query.trim()) {
+            // 有必要去请求
+            changeEnterLoadingDispatch(true)
+        }
+    }, [query])
+    
     return (
         // 当dom ready 组件挂载上去， 应用css transiiton效果 
         <CSSTransition
@@ -38,8 +65,9 @@ const Search = (props) => {
             {/* sc-evZas bAobGr fly-enter fly-enter-active */}
             <Container play={songsCount}>
                 <div className="search_box_wrapper">
-
+                    <SearchBox back={searchBack} newQuery={query} handleQuery={handleQuery}></SearchBox>
                 </div>
+                { enterLoading && <EnterLoading><Loading></Loading></EnterLoading>}
             </Container>
         </CSSTransition>
     )
@@ -63,13 +91,13 @@ const mapDispatchToProps = (dispatch) => {
         getHotKeyWordsDispatch() {
             dispatch(getHotKeyWords());
         },
-        // changeEnterLoadingDispatch(data) {
-        //     dispatch(changeEnterLoading(data))
-        // },
+        changeEnterLoadingDispatch(data) {
+            dispatch(changeEnterLoading(data))
+        },
         // getSuggestListDispatch(data) {
         //     dispatch(getSuggestList(data))
         // }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Search))

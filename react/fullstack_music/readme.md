@@ -180,3 +180,59 @@
         fly-exit-active
     7. transform-origin
     8. GPU 加速
+    9. 页面后退按钮 只需要setshow(false)，CSSTransition 组件的 onExit 接管
+
+- 界面技巧
+    1. 带有后退、第二按钮 页面 弹性布局
+        flex
+        align-items:center
+        margin:0 0.3rem;
+    2. input 搜索用户体验
+        focus 自动聚焦
+        - useRef()  dom关联对象 {current: null}
+        - jsx dom  ref={refObj}
+        - useEffect  current 被关联成功了 DomElement...
+        - refObject.current.focus()
+    3. 清楚功能
+        style-loader 行内样式  display: 动态
+
+- useMemo 用法及吹牛指南
+    1. input change 事件需要 debounce 的，utils
+    2. debounce 的计算结果 useMemo 的前提条件，缓存计算结果
+    3. react 父组件 有mvvm更新， 通知所有子组件更新
+    4. 组件更新的本质，组件是一个函数，函数重新运行， jsx 重新运行
+    5. debounce 只需要计算一次，结果缓存就好，没必要重新运算
+    6. 如useEffect  如果万一计算结果过时了呢？
+        第二个参数 [handleQuery] 三元要表达对useMemo理解的地方
+    面试是当面展示自己，可以表演
+
+- 内外双修 query
+    页面级别组件 query 为 action display 做准备
+    useEffect query  dispatch action
+    input 子组件 query debounce useMemo 
+    useEffect query 父组件报告通信
+- hooks 是 react 编程风格
+    1. hooks  use开头的函数式编程风格
+    2. class Search extends Component {
+        constructor() {
+
+        }
+        render() {
+            return (
+                jsx
+            )
+        }
+    } 缺点是 为了面向对象而面向对象
+    很多形式主义代码
+    3. useEffect useState useMemo useCallback ...
+        函数 带来便捷功能
+    4. useEffect 高级使用技巧和模板
+        一个组件内可以多次使用useEffect
+        - useEffect 匹配多个生命周期
+            mount  updated  unmounted
+        - search 中 分而治之 逻辑条理清晰
+            mounted 生命周期完成 input ref useRef 聚焦功能 第一个
+            query 改变的时候 与父组件通信 useEffect(, [query])
+            input value 是可以被父组件管理的，newQuery
+            useEffect(, [newQuery]) input value 的设置, redux newQuery发生改变，重新的运行
+    5. useMemo 好高级
