@@ -21,3 +21,4 @@ export const getSuggestListRequest =
 
 export const getResultSongsListRequest = 
     query => axiosInstance.get(`/search?keywords=${query}`)
+    

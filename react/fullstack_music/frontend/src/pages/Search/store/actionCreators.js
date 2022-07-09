@@ -42,7 +42,14 @@ export const getSuggestList = (query) => {
                 if (!data) return;
                 let res = data.result || [];
                 dispatch(changeSuggestList(res))
+            })
+        getResultSongsListRequest(query)
+            .then(data => {
+                if (!data) return;
+                let res = data.result.songs || []
+                dispatch(changeResultSongs(res))
                 dispatch(changeEnterLoading(false))
             })
     }
 }
+

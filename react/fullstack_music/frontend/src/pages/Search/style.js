@@ -49,7 +49,7 @@ export const HotKey = styled.div`
         padding-top: 1.75rem;
         margin-bottom: 1rem;
         font-size: ${style["font-size-m"]};
-        color: ${style["font-color-desc-v2"]};
+        color: ${style["font-color-desc"]};
     }
     .item {
         display: inline-block;
