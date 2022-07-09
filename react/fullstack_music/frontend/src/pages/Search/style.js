@@ -33,3 +33,31 @@ export const Container = styled.div`
         transform: translate3d(100%, 0, 0);
     }
 `
+
+export const ShortcutWrapper = styled.div`
+    position: absolute;
+    top: 2rem;
+    bottom: 0;
+    width: 100%;
+    display: ${props => props.show ? "" : "none"};
+`
+
+// 样式组件可以提供可复用的样式
+export const HotKey = styled.div`
+    margin: 0 1rem 1rem 1rem;
+    .title {
+        padding-top: 1.75rem;
+        margin-bottom: 1rem;
+        font-size: ${style["font-size-m"]};
+        color: ${style["font-color-desc-v2"]};
+    }
+    .item {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        margin: 0 1rem 0.5rem 0;
+        border-radius: 0.3rem;
+        background: ${style["highlight-background-color"]};
+        font-size: ${style["font-size-m"]};
+        color: ${style["font-color-desc"]};
+    }
+`
