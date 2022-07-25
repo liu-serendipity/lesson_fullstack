@@ -4,7 +4,9 @@ const Router = require('koa-router')();  // koa 路由中间件 BrowserRouter
 const cors = require('koa-cors')
 const app = new Koa();
 const { 
-    fetchSuggest
+    fetchSuggest,
+    fetchHotword,
+    fetchSearchData
 } = require('./api')
 // const crossDomain = require('./middleware/cross-domain');  // 支持跨域
 
@@ -36,6 +38,7 @@ Router.get('/banners', ctx => {
     }]
     ctx.body = banners
 })
+
 // 添加了一个路由中间件
 // 上下文对象 = req + res
 Router.get("/search/suggest", async (ctx, next) => {
@@ -46,23 +49,64 @@ Router.get("/search/suggest", async (ctx, next) => {
     // console.log(w, '------------')
     try{
         const data = await fetchSuggest(w);
-        console.log(data);
-        // let resData = {
-        //     code: "1",
-        //     msg: "success"
-        // }
-        // if (data.code === 0) {
-        //     resData.data = data.result;
-        // } else {
-        //     resData.code = "0";
-        //     resData.msg = "fail";
-        // }
+        // console.log(data);
+        // api 前后端交互的数据格式是JSON
+        let resData = {
+            code: "1",  // 成功响应 200
+            msg: "success"  // 成功 | 失败原因
+        }
+        if (data.code === 0) {
+            resData.data = data.result;
+        } else {
+            resData.code = "0";
+            resData.msg = "fail";
+        }
         // // ctx.set('content-type', 'json');
-        // ctx.body = resData
+        ctx.body = resData
     } catch(e) {
         // 处理错误
         next(e)
     } 
+})
+
+// 接口服务
+Router.get("/search/hotword", async (ctx, next) => {
+    try {
+        const data = await fetchHotword()  // rpc 调用
+        let resData = {
+            code: "1", 
+            msg: "success" 
+        }
+        if (data.code === 0) {
+            resData.data = data.list;
+        } else {
+            resData.code = "0";
+            resData.msg = "fail";
+        }
+        ctx.body = resData
+    } catch(e) {
+        next(e)
+    }
+})
+
+Router.get("/search", async (ctx, next) => {
+    const w = encodeURI(ctx.query.keyword);
+    try {
+        const data = await fetchSearchData(w)  // rpc 调用
+        let resData = {
+            code: "1", 
+            msg: "success" 
+        }
+        if (data.code === 0) {
+            resData.data = data.data;
+        } else {
+            resData.code = "0";
+            resData.msg = "fail";
+        }
+        ctx.body = resData
+    } catch(e) {
+        next(e)
+    }
 })
 
 app.use(cors())

@@ -32,3 +32,15 @@ export const getVideosRequest = ():Promise<Video[]> => {
     })
     return p
 }
+
+export const getHotwordRequest = ():Promise<any[]> => {
+    const p = new Promise<any[]>((resolve, reject) => {
+        fetch('http://localhost/search/hotword')
+            .then(data => data.json())
+            .then(data => {
+                console.log(data);
+                resolve(data)
+            })
+    })
+    return p
+}

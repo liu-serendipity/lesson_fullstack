@@ -122,3 +122,31 @@
                 - then
                 - try {} catch {}
 
+- api 服务准备res响应数据
+    let resData = {
+        code: "1",  // 1 成功
+        msg: "success"  
+    }
+    b站 code 0 成功
+    data.result 写入resData
+
+- api 服务的使命
+    1. http 服务
+    2. router method url 响应
+    3. try catch 容错
+    4. 准备好json数据 响应 res.body
+
+- typescript
+    - component
+    - api  
+    - store
+
+- reducer + typescript 怎么做？
+    1. 架构调整了  combineReducers + n reducer 函数 写在一个文件里
+    2. npm i @types/redux --save-dev
+        build js
+    3. AnyAction 类型 action:AnyAction
+    4. actions 中 添加AnyAction 一定有type字段
+    5. 在异步的action里，约定 dispatch:Dispatch<AnyAction>
+        - 一定会调用一个同步的action  AnyAction
+    6. redux 需要的最基础typescript 搞完了
