@@ -150,3 +150,63 @@
     5. 在异步的action里，约定 dispatch:Dispatch<AnyAction>
         - 一定会调用一个同步的action  AnyAction
     6. redux 需要的最基础typescript 搞完了
+
+- redux typescript 使用
+    - store 数据流管理的store 单例(设计模式Singleton createStore ？ newStore？) (由combinReducers 返回的单一状态树)
+        1. window as any 断言 跳过 ts 编译阶段的检测  ts 语法编译
+        只有运行在浏览器端才有window 对象
+        2. ts vite js后  工程化  build main.js
+        3. 在浏览器运行 js 短暂的编译阶段 变量提升 window
+        4. 运行
+        window as any  断言 assert
+    - thunk as ThunkMiddleware 断言
+    - 提供 state  rootState 自定义类型  ReturnType<typeof reducers>
+        state.search  :rootState 推断  代码写起来更快
+        正确性  多人协作
+    - connect  state:rootState
+
+- bilibili 首页tab 功能
+    - antd mobile  tabs  dropdown
+    - 数据流角度
+
+- 后端 基本技能
+    1. 抖音等没有移动网页的应用
+        抓包  代理工具  fiddler app
+    2. 缓存  304 Not Modified
+    3. 单点入口  景区入口
+        http服务的启动
+        路由的挂载
+        中间件服务（路由）的挂载
+        模块化放到其他的地方
+        简单、简洁
+        MVC model模型层 数据库的抽象
+        view html模板
+        controllers 控制器（校验参数 page 1  pagesize）
+    4. 构建数据模型能力
+        b站首页多级菜单
+        - 树状结构
+        - 0 第一级菜单
+            每个菜单项 {tid: 1, typename: "动画"}
+            tid 唯一  typename 标题
+        - tid 1 父级
+            1：[{tid: 33, typename: "MAD·AMV"}]
+        - class 声明 模块化，ts要求比较严格 export {}
+            children: PartitionType[]
+
+- model层 ts 写法
+    1. model 归属 ts  比较难
+    2. type  interface  class  关键字
+        都可以声明类型
+    3. 每个架构级别目录下，添加index.ts 文件  方便引入
+
+- PartitionTypes 从 后端到前端 完整的数据流
+    1. 源头
+        GET /partitions 获取api服务数据
+    2. 前端
+        api/getPartitionsRequest  接口
+    3. redux
+        异步action  结合models 校验
+        dispatch 同步action
+        reducer 重新计算
+    4. connect mapStateToPorps  state:rootState
+    5. 组件 props 解构

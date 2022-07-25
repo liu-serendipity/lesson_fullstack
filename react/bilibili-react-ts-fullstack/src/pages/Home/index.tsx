@@ -1,11 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { rootState } from '@/store'
+import { Dispatch, AnyAction } from 'redux'
+import { getPartitions } from '@/store/actions/partitions'
 
-const Home = () => {
+interface HomeProps {
+  loading: boolean;
+  getPartitionsDispatch: () => void
+}
+
+const Home:React.FC<HomeProps> = (props) => {
+  const { loading } = props
+  const { getPartitionsDispatch } = props
+  useEffect(() => {
+    getPartitionsDispatch()
+  }, [])
+
   return (
     <div>
-    Home
+      {loading && <div>加载中...</div>}
     </div>
   )
 }
 
-export default Home
+const mapStateToProps = (state:rootState) => ({
+  hotword: state.search.hotword,
+  loading: state.loading,
+  partitions: state.home.partitions
+})
+
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
+  getPartitionsDispatch() {
+    dispatch(getPartitions())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

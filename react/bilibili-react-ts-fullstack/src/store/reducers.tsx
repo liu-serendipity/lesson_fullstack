@@ -6,6 +6,10 @@ import * as ActionTypes from './action-types'
 
 
 const initalState = {
+    loading: true,
+    home: {
+        partitions: {}
+    },
     // 分支
     search: {
         suggest: [],
@@ -42,6 +46,28 @@ const combineSearch = (state = initalState.search, action:AnyAction) => {
     }
 }
 
+const combineLoading = (state = initalState.loading, action: AnyAction) => {
+    switch(action.type) {
+        default:
+            return state
+    }
+}
+
+const combineHome = (state = initalState.home, action: AnyAction) => {
+    switch(action.type) {
+        case ActionTypes.SET_PARTITION:
+            return {
+                ...state,
+                partitons: action.data
+            }
+        break
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
-    search: combineSearch
+    search: combineSearch,
+    loading: combineLoading,
+    home: combineHome
 })
