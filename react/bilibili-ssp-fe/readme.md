@@ -26,3 +26,20 @@
             rem.ts 要模块化
     2. vite.config.js  alias
         vite.config.ts + tsconfig.json
+    3. rem 仍然使用rem作为适配方案
+        设计师给的设计稿 750px  iphone
+        vw 作为适配方案  750  100vw  html 10vw = 1rem = 75px
+        px2rem  手动封装  css 超级 styled-components  stylus/sass
+        不用每次去算，看设计稿， 蓝湖
+    4. logo 等图片用的不是 png jpeg ...  像素图片  放大 模糊
+        svg 图片格式，html写出来的
+        logo 最在意的是什么？
+        手机 -> PC -> 电视    logo.png
+        svg 矢量图（数学图形）+ canvas  数据可视化方向
+            无限拉伸
+
+- ts api   
+    1. axios 作为请求后端的库
+    2. 配置 baseURL + 拦截
+        config.ts
+    3. 所有的请求列出来
