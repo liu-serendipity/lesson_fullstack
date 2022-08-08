@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 表单编码的一种格式
+        默认编码 application/x-www-form-urlencoded
+        请求体 
+        文件上传 只能使用 multipart/form-data 
+        text/plain  
+        text/json 
+        http 请求头 Content-Type 
+    -->
+    <form name="uploadForm" method="post" action="http://localhost:8080/upload" 
+    enctype="multipart/form-data">
+        <h1>测试通过接口上传文件</h1>
+        <p>
+            <label for="filenameInput">指定文件名：</label>
+            <input id="filenameInput" type="text" name="filename" required /></p>
+        <p>
+            <label for="fileInput">上传文件：</label>
+            <input id="fileInput" type="file" name="file" multiple accept="image/*" required />
+        </p>
+        <!-- html5 提供更加强大得form 表单能力 accept  -->
+        <input type="submit" value="上传"/>
+    </form>
+    <script>
+    const oForm = document.forms["uploadForm"];
+    oForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // text/plain  
+        // const oData = {}
+        // oData.fileName = oForm["filename"].value;
+        var formData = new FormData()  // js 组织表单数据的对象 html5
+        formData.append("filename", oForm["filename"].value)
+        // html5 file 对象
+        // input 控件 去访问本地文件系统中的文件
+        // 系统是有文件头信息的
+        // 传统的html功能有限，没有权限和系统交互这些信息
+        // html5 File对象，跟操作系统里面的文件系统可以直接访问
+        // html5 增强了表单功能
+        // console.log(oForm["file"].files);
+        // return
+        formData.append("file", oForm["file"].files[0])
+        // js 手动提交? ajax
+        const xhr = new XMLHttpRequest();
+        // true | false 异步  同步 
+        // 页面会卡在这里 
+        // 文件
+        // xhr 怎么发送文件？
+        xhr.open("POST", "http://localhost:8080/upload", true);
+        xhr.send(formData);  // text/plain
+        xhr.onreadystatechange = function(event) {
+            if (event.readState == 4) {
+                console.log('-------------')
+            }
+        }
+    })
+    </script>
+</body>
+</html>
