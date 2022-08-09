@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let geo = ['28.682', '115.8579']
+        let geo = {
+            lat: '28.682',
+            lng: '115.8579'
+        }
+        // 以字符串的方式来存储的  toString
+        localStorage.setItem('geo', JSON.stringify(geo))
+        console.log(JSON.parse(localStorage.getItem('geo')))
+        localStorage.setItem('ls_name', 'lyf')  // 一直在
+        sessionStorage.setItem('ss_name', 'llm')  // 会话中在，关闭浏览器窗口清除
+    </script>
+</body>
+</html>

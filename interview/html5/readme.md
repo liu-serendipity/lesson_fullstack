@@ -18,10 +18,24 @@
         2. video audio  B站 爱奇艺
         3. canvas(显卡显存) 弹幕（刷火箭 高帧率刷新 requestAnimationFrame） 游戏
         4. 拖放 
-        5. 本地存储 用户端 localStorage(要手动删除) sessionStorage(会话结束就没了，关闭浏览器)
-            key => value  setItem('userInfo', JSON.stringify(user))  JSON.parse(getItem('userInfo'))
-            数据库 IndexDB sql
-            cookie 
+        5. 本地存储 用户端 1. localStorage(要手动删除) sessionStorage(会话结束就没了，关闭浏览器)
+            key => value  setItem('userInfo', JSON.stringify(user))  JSON.parse(getItem('userInfo'))  5-10M
+                应用场景 举出哪些？
+                - 存储地理位置 geolocation  locationStorage
+                - 存储登录信息 取代cookie登录  基于token
+                    cookie uid -> 服务器端 session中间件(基于cookie) 内存会话存储对象 key value
+                - 用户信息的存储 昵称 头像 ...
+                - redux 一些需要持久化的状态
+                    todos [{text:, done:}]  dispatch  localStorage.setItem()
+                    getItem()  dispatch setTodos()
+                    logined
+                    userInfo
+                - 主题颜色，icon，风格，语言（react 国际化）
+                    en -> cn  看小说
+                - 用户设置
+            2. 数据库 IndexDB sql  几十M
+            3. cookie HTTP 无状态 每次都带上，加剧了请求的性能开销  很小 4kb
+            4. 浏览器缓存  静态资源 js不介入 状态码
         6. Cache Manifest 离线存储功能
         7. Web Worker  浏览器给js的 多线程能力
             - js 是单线程
@@ -49,3 +63,15 @@
                 授权一次后，默认上次，除非清空
             - 浏览器嗅探
             - edge可以正常使用，chrome等不可以，开启了https的应用才可以使用
+
+- 传统登录 cookie + session -> token 登录 （licalStorage）
+    axios 拦截  authorization token
+    1. cookie 维护用户状态
+        克制，session_id uid
+    2. cookie  expires/maxAge  domain  path  httpOnly  SameSite  Secure
+    3. session 服务器端
+    4. session 基于cookie
+        username password session 中间件 session对象 同时生成cookie对象
+        sid -> 客户端也有了sid cookie -> /post/save -> session中间件 -> 
+        拿到cookie sid -> 后端session 内存空间 sid 作为key去查找 会话对象里的
+        存储 -> 登录了，用户名，头像... 不需要去数据库查找 -> 数据库开销非常大
