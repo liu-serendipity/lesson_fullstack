@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+    <div id="result"></div>
+    <script src="webworker.js"></script>
+    <script>
+        let startBtn = document.getElementById('start')
+        let stopBtn = document.getElementById('stop')
+        let result = document.getElementById('result')
+        startBtn.addEventListener('click', startWorker, false)
+        stopBtn.addEventListener('click', stopWorker, false)
+        let w 
+        function startWorker(){
+            if (typeof (Worker) !== 'undefined') {  // 浏览器嗅探 是否支持Worker功能
+                if (typeof (w) == 'undefined') {  // 只能实例化一次
+                    w = new Worker('webworker.js')
+                }
+                w.onmessage = function(event) {
+                    result.innerHTML = event.data
+                }
+            } else {
+                result.innerHTML = '不支持'
+            }
+        }
+        function stopWorker(){
+            if (w) {
+                w.terminate()
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">点击按钮获取您当前坐标</div>
+    <button id="btn">获取</button>
+    <script>
+    // 手机 电话卡， 卫星定位， lbs 硬件加持
+    // 陀螺仪  重力感应
+    // web 应用 ？  js -> ? window.localStorage 
+    // lbs  ？ BOM  DOM  navigator 
+    const demo = document.getElementById('demo');
+    document.getElementById('btn').addEventListener('click', function() {
+        if (navigator.geolocation) { // 浏览器嗅探 
+            // 不支持lbs 或关掉lbs  用户隐私
+            console.log('-----------');
+            navigator.geolocation.getCurrentPosition(showPosition)
+        } else {
+            demo.innerHTML = '该浏览器不支持获取地址位置'
+        }
+    }, false);
+    function showPosition(position) {
+        // console.log(position);
+        demo.innerHTML = `
+            维度：${position.coords.latitude} <br> 
+            经度：${position.coords.longitude}
+        `
+    }
+    </script> 
+</body>
+</html>
