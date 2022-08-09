@@ -17,29 +17,3 @@
         form-data  multipart -> multer diskStorage 配置 multer(config) -> post 中间件 -> router
         中间件思维  router -> 登录auth 文件上传 -> router 处理中间件
 
-- html5 主题
-    - html ? xml 1990 文档标记语言
-    - html4 1997 
-        DTD
-    - html5 2008 推出
-        <!DOCTYPE html> html5声明
-    - html5有哪些新特性
-        1. 语义化标签
-            header nav aside section article footer canvas video audio 以前flash
-            - 比所有布局全部采用div标签  代码可读性提升
-            - 有利于SEO 搜索引擎优化 识别页面结构 article 更加重要
-            - 方便设备解析，盲人阅读 
-
-    - html5 有哪些功能
-        1. 表单功能增强
-            - input type  placeholder  autofocus  required  maxLength  minLength
-            - formData
-        2. video audio  B站 爱奇艺
-        3. canvas(显卡显存) 弹幕（刷火箭 高帧率刷新 requestAnimationFrame） 游戏
-        4. 拖放 
-        5. 本地存储 用户端 localStorage(要手动删除) sessionStorage(会话结束就没了，关闭浏览器)
-            key => value  setItem('userInfo', JSON.stringify(user))  JSON.parse(getItem('userInfo'))
-            数据库 IndexDB sql
-            cookie 
-        6. Cache Manifest 离线存储功能
-        7. Web Worker  浏览器给js的 多线程能力
