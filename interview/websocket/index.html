@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .message {
+        width: 600px;
+        min-height: 400px;
+        padding: 15px;
+        border: 1px solid #ccc;
+    }
+    .message .a {
+        text-align: right;
+    }
+    .message li {
+        line-height: 30px;
+        list-style: none;
+    }
+    </style>
+</head>
+<body>
+    <h1>在线聊天室</h1>
+    <div class="wrap">
+        <input type="text" class="input">
+        <button class="btn-send">发送</button>
+    </div>
+    <ul class="message"></ul>
+    <script>
+        window.onload = () => {
+            let ws;  // VO
+            let elInput = document.querySelector('.input');
+            let elUl = document.querySelector('.message');
+            let messageData = {
+                fromUserId: math.ceil(Math.random()*10000),
+                content: ''
+            }
+            function connectWebsocket() {
+                // html5  启动一个 1316 websocket 协议
+                ws = new WebSocket('ws://localhost:1316');
+                ws.onmessage = (msg) => {
+                    let message = JSON.parse(msg.data);
+                    elUl.innerHTML + `<li class="b">${message.content}</li>`;
+                }
+            }
+            connectWebsocket();
+            document
+                .querySelector('.btn-send')
+                .addEventListener('click', () => {
+                    let msg = {
+                        ...messageData,
+                        content: elInput.value,
+                        type: 'text'
+                    }
+                    ws.send(JSON.stringify(msg));
+                })
+        }
+    </script>
+</body>
+</html>
