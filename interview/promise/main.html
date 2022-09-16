@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 方便维护 可读性好
+        const PENDING = 'pending'
+        const FULFILLED = 'fulfilled'
+        const REJECTED = 'rejected'
+
+        class MyPromise{
+            // 执行器
+            // 异步任务完成后
+            // this.resolve 状态改变
+            constructor(executor) {
+                // 
+                executor(this.resolve, this.reject)  // 同步 立即执行
+            }
+            status = PENDING  // 开始的状态
+            value = null
+            reason = null
+            onFulfilledCallbacks = []
+            onRejectedCallbacks = []
+            // 为什么使用箭头函数
+            resolve = (value) => {
+                // console.log(this);
+                if (this.status === PENDING) {  // 不可逆
+                    this.status = FULFILLED
+                    this.value = value
+                    // 异步
+                    while(this.onFulfilledCallbacks.length) {
+                        this.onFulfilledCallbacks.shift()(value)
+                    }
+                }
+            }
+            reject = (reason) => {
+                if (this.status === PENDING) {
+                    this.status = REJECTED
+                    this.reason = reason
+                    this.onRejectedCallback && this.onRejectedCallback(reason)
+                }
+            }
+            then(onFulfilled, onRejected) {
+                // 支持链式调用？
+                // 立即运行
+                // 如果状态为pending
+                // 无条件的同步 then 链式调用
+                const promise2 = new MyPromise((resolve, reject) => {
+                    // 立即运行
+                    if (this.status === FULFILLED) {
+                        // 同步链式调用
+                        const x = onFulfilled(this.value)
+                        // x 解决了
+                        resolvePromise(x, resolve, reject)
+                    } else if (this.status === REJECTED) {
+                        onRejected(this.reason)
+                    } else if (this.status === PENDING) {
+                        this.onFulfilledCallbacks.push(onFulfilled)
+                        this.onRejectedCallbacks.push(onRejected)
+                    }
+                })
+                return promise2
+            }
+        }
+
+        function resolvePromise(x, resolve, reject) {
+            if (x instanceof MyPromise) {
+                // x 同步 x resolve ？ 异步 x resolve callback ？
+                x.then(resolve, reject)
+            } else {
+                resolve(x)
+            }
+        }
+
+        const promise = new MyPromise((resolve, reject) => {
+            // setTimeout(() => {
+                resolve('success')  // 同步
+            // }, 1)
+            // 异步的时候呢？
+            // 无效
+            // 普通函数
+            // reject('err')
+        })
+        // catch 还没上场，可选的 2个参数
+        // promise.then(value => {
+        //     console.log('resolve', value);
+        // }, reason => {
+        //     console.log('reject', reason);
+        // })
+        // 参数是可选的
+        function other() {
+            return new MyPromise((resolve, reject) => {
+                resolve('other')  // 同步
+            })
+        }
+        promise.then(value => {
+            console.log(1);
+            console.log('resolve', value)
+            return other()
+        }).then(value => {
+            console.log(2);
+            console.log('resolve', value);
+        }).then(value => {
+            console.log(3);
+            console.log('resolve', value);
+            return 4
+        }).then(value => {
+            console.log(value);
+        })
+        // promise.then(value => {
+        //     console.log(2);
+        //     console.log('resolve', value);
+        // })
+        // promise.then(value => {
+        //     console.log(3);
+        //     console.log('resolve', value);
+        // })
+    </script>
+</body>
+</html>

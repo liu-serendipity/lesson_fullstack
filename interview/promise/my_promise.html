@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 方便维护 可读性好
+        const PENDING = 'pending'
+        const FULFILLED = 'fulfilled'
+        const REJECTED = 'rejected'
+
+        class MyPromise {
+            constructor(executor) {
+                try {
+                    executor(this.resolve, this.reject)
+                } catch (error) {
+                    this.reject(error)
+                }
+            }
+            status = PENDING
+            value = null
+            reason = null
+            onFulfilledCallback = null
+            onRejectedCallback = null
+            resolve = (value) => {
+                // 只能迁移一次
+                if (this.status === PENDING) {
+                    this.status = FULFILLED
+                    this.value = value
+                    this.onFulfilledCallback && this.onFulfilledCallback(value)
+                }
+            }
+            reject = (reason) => {
+                if (this.status === PENDING) {
+                    this.status = REJECTED
+                    this.reason = reason
+                    this.onRejectedCallback && this.onRejectedCallback(reason)
+                }
+            }
+            then(onFulfilled, onRejected) {
+                // sync
+                if (this.status === FULFILLED) {
+                    onFulfilled(this.value)
+                } else if (this.status === REJECTED) {
+                    onRejected(this.reason)
+                } else if (this.status === PENDING) {
+                    this.onFulfilledCallback = onFulfilled
+                    this.onRejectedCallback = onRejected
+                }
+            }
+        }
+
+        let p1 = new MyPromise((resolve, reject) => {
+            // setTimeout(() => {
+                // resolve('success')
+                // reject('failed')
+                // 大型语言
+                throw Error('执行器中的致命错误')
+            // }, 0)
+        })
+        p1.then((value) => {
+            console.log('resolved', value);
+        }, (err) => {
+            console.log('rejected', err);
+        })
+        // .catch
+    </script>
+</body>
+</html>
