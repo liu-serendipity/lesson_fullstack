@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- vue react 现代框架 工程化去解决 简单搞 vite -->
+    <!-- 根节点 react-dom App挂上去 MVVM作用范围 -->
+    <div id="app">
+        <!-- dom编程 -> 模板的编译 -->
+        <h2>{{title}}</h2>
+        <!-- vue 支持双向绑定
+            v-model 指令 react没有 props  v-
+        -->
+        <input type="text" v-model="title">
+    </div>
+    <!-- 非MVVM范围 -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // API 约定大于js语法，react反过来
+        // 组件对象 最简单的
+        const App = {
+            // 配置式
+            data() {  // api 声明组件状态
+                return {
+                    title: ""
+                }
+            }
+        }
+        // 框架的命名空间
+        // 第一次的挂载
+        // 组件化
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+</html>

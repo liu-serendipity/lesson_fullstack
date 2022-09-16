@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM编程 JQUERY</title>
+</head>
+<body>
+    <!-- React(MVVM框架)  Antd(UI组件库 业务框架)
+    没有node 没有工程化 -->
+    <!-- js dom innerHTML -->
+    <div id="app"></div>
+    <!-- 事件 -->
+    <input type="text" id="todo-input">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+    // dom 编程
+    $('#todo-input')
+    // addEventListener
+        .on('input', function() {
+            let val = $(this).val();
+            $('#app').html(val);
+        })
+    </script>
+</body>
+</html>
