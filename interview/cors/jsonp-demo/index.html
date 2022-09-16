@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <script>
+        function callback(data) {
+            console.log(data);
+        }
+    </script>
+    <!-- <script src="http://localhost:8888"></script> -->
+    <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.nRlAFygdctTCHmIWN7GxRwHaEK?pid=ImgDet&rs=1" alt="">
+    <script>
+        function jsonp(url, data={}, callback='callback', cb) {
+            // console.log(url, data, callback)
+            let dataStr = url.indexOf('?') === -1 ? '?' : '&'
+            for (let key in data) {
+                dataStr += `${key}=${data[key]}&`
+            }
+            // with padding
+            dataStr += `callback=${callback}`
+            let scriptSrc = url + dataStr
+            // console.log(scriptSrc);
+            let oScript = document.createElement('script')
+            oScript.src = scriptSrc
+            document.body.appendChild(oScript)
+            window[callback] = (data) => {
+                // 完成跨域请求，做接下来的业务
+                // console.log(data)
+                cb(data)
+            }
+        }
+
+        jsonp('http://localhost:8888/recommend?a=1', {
+            page: 1,
+            cate: 'recommend'
+        }, 'recommendCallback', () => {
+            console.log(data, 'to be continue')
+        })
+        // JSONP
+        // 1. script src DOM 动态构建
+        // 2. callback 动态指定
+        // Ajax fetch 跨域  同源策略
+        // 能发送吗？ CORS
+        // 服务器能接受吗？
+        // 数据到来之后能相信吗？
+
+        // fetch('http://localhost:8888/')
+        //     .then(data => data.json())
+        //     .then(data => {
+        //         console.log('--------')
+        //     })
+    </script>
+</body>
+</html>
