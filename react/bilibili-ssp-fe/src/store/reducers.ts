@@ -1,21 +1,44 @@
-import { combineReducers, AnyAction } from 'redux';
-import * as ActionTypes from "./action-types";
+import { combineReducers, AnyAction } from 'redux'
+import * as actionTypes from './constants'
 
 const initialState = {
-    oneLevelPartitions: [],
+    loading: true,
+    ranking: {
+        rankingPartitions: [],
+        rankingVideos: []
+    }
 }
 
-function combineOneLevelPartitions(oneLevelPartitions = 
-    initialState.oneLevelPartitions,
-    action: AnyAction) {
+const loadingReducer = (state = initialState.loading, action: AnyAction) => {
     switch (action.type) {
-        case ActionTypes.SET_ONE_LEVEL_PARTITIONS:
-        return action.oneLevelPartitions;
+        case actionTypes.SET_LOADING:
+            return action.data
         default:
-        return oneLevelPartitions;
+            return state
+    }
+}
+
+const rankingReducer = (state = initialState.ranking, action: AnyAction) => {
+    switch (action.type) {
+        case actionTypes.SET_RANKING_PARTITIONS:
+            return {
+                ...state,
+                rankingPartitions: action.data
+            }
+            break
+        case actionTypes.SET_RANKING_VIDEOS:
+            return {
+                ...state,
+                rankingVideos: action.data
+            }
+            break
+        default:    
+            return state
     }
 }
 
 export default combineReducers({
-    oneLevelPartitions: combineOneLevelPartitions,
+    loading: loadingReducer,
+    ranking: rankingReducer
 })
+
