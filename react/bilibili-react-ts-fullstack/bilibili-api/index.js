@@ -93,7 +93,7 @@ Router.get("/search/hotword", async (ctx, next) => {
 Router.get("/search", async (ctx, next) => {
     const w = encodeURI(ctx.query.keyword);
     try {
-        const data = await fetchSearchData(w)  // rpc 调用
+        const data = await fetchSearchData(w)
         let resData = {
             code: "1", 
             msg: "success" 

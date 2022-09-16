@@ -31,7 +31,7 @@ const mapStateToProps = (state:rootState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
   getPartitionsDispatch() {
-    dispatch(getPartitions())
+    dispatch<any>(getPartitions())
   }
 })
 
