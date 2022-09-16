@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">跳转</button>
+    <button id="goback">返回</button>
+    <script>
+        const btn = document.querySelector('#btn');
+        const goback = document.querySelector('#goback');
+        btn.addEventListener('click', (event) => {
+            const state = {name: 'home'};
+            window.history.pushState(state, '', 'page1');
+        })
+        window.onpopstate = (event) => {
+            const state = event.state;
+            console.log(state);
+        }
+        goback.addEventListener('click', () => {
+            history.back();
+        })
+    </script>
+</body>
+</html>
