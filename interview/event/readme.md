@@ -1,0 +1,9 @@
+- event loop event 内置type mouse key touch DOM0 DOM2 第三个参数，事件代理
+- 自定义事件 event bus
+    - 自定义任何类型的事件，并且使用emit触发回调
+    - EventEmitter 构造函数中 使用了Map作为存储的容器 1.存
+    - 编写了addListenner事件  存进容器
+    - emit方法，使用相应的type取出对应的函数执行
+    - 事件并不复杂
+- 设计模式
+- react MVVM 核心

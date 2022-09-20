@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 自定义一个事件 callback 寄存到某处 某个条件下 触发 -->
+    <script>
+        // 创建了EventEmitter类，自定义事件
+        class EventEmitter {
+            constructor() {
+                // 所有的事件 event loop
+                this.events = this.events || new Map()  // es6新的数据结构 HashMap {} O(1)
+            }
+            // type callback
+            // 订阅
+            addListenner(type, fn) {
+                if (!this.events.get(type)) {
+                    this.events.set(type, fn)  // 事件回调函数存进去
+                }
+            }
+            // 触发事件 fire emit
+            // type 必传的第一个参数
+            // 发布
+            emit(type) {
+                let handle = this.events.get(type)
+                handle.apply(this, [...arguments].slice(1))  // call bind
+            }
+        }
+
+        let emitter = new EventEmitter()  // 自定义事件类
+        emitter.addListenner('interview', (salary, position) => {
+            console.log(`这里有一个月薪${salary}的${position}岗位，欢迎面基`);
+        }) // 自定义事件的类型
+        setTimeout(() => {
+            emitter.emit('interview', 20000, '工程师')
+        }, 2000)
+    </script>
+</body>
+</html>
