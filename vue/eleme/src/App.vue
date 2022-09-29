@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-header :seller="seller"/>
+    <router-view />
   </div>
 </template>
 <script>
