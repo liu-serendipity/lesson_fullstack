@@ -9,17 +9,15 @@
                 <div class="title_box">
                     <h2 class="title">比亚迪后台管理系统</h2>
                 </div>
+                <login-form></login-form>
             </div>
         </a-card>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { ref, reactive } from 'vue'
+  import LoginForm from './Form.vue'
 
-    const model = reactive({
-
-    })
 </script>
 
 <style lang="less" scoped>
